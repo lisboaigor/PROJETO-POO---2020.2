@@ -1,4 +1,4 @@
-package org.openjfx.farmacia.controller.Produto;
+package org.openjfx.farmacia.controller.produto;
 
 public class ProdutoController {
 	void acessarProduto(/* id (arg) */) {
