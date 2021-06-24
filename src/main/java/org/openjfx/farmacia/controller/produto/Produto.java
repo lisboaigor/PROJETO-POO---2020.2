@@ -5,16 +5,19 @@ public final class Produto {
 	private String nome;
 	private String fabricante;
 	private String categoria;
+	private String formula;
 	
 	private double preco;
 	private int estoque;
 	
-	public Produto(String codigo, String nome, String fabricante, String categoria, double preco, int estoque) {
+	public Produto(String codigo, String nome, String fabricante, String categoria, String formula, double preco,
+			int estoque) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
 		this.fabricante = fabricante;
 		this.categoria = categoria;
+		this.formula = formula;
 		this.preco = preco;
 		this.estoque = estoque;
 	}
@@ -23,7 +26,6 @@ public final class Produto {
 		estoque -= quantidadeVendida;
 	}
 	
-
 	public String getNome() {
 		return nome;
 	}
@@ -40,8 +42,20 @@ public final class Produto {
 		this.fabricante = fabricante;
 	}
 
-	public String getCodigo() {
-		return codigo;
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	public String getFormula() {
+		return formula;
+	}
+
+	public void setFormula(String formula) {
+		this.formula = formula;
 	}
 
 	public double getPreco() {
@@ -60,16 +74,12 @@ public final class Produto {
 		this.estoque = estoque;
 	}
 
-	public String getCategoria() {
-		return categoria;
+	public String getCodigo() {
+		return codigo;
 	}
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
-	
 	@Override
 	public String toString() {
-		return codigo + " " + nome + " " + fabricante + " " + categoria + " " + preco + " " + estoque;
+		return codigo + ";" + nome + ";" + fabricante + ";" + categoria + ";" + preco + ";" + estoque;
 	}
 }

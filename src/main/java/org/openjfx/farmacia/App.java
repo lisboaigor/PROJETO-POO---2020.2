@@ -8,18 +8,24 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * JavaFX App
- */
+import org.openjfx.farmacia.controller.produto.EstoqueController;
+import org.openjfx.farmacia.controller.produto.Produto;
+
 public class App extends Application {
 
     private static Scene scene;
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("telaInicial"), 800, 500);
+        EstoqueController estoque = new EstoqueController();
+        estoque.inicializarEstoque();
+        
+        estoque.imprimirEstoque();
+      
+    	scene = new Scene(loadFXML("telaInicial"), 800, 500);
         stage.setScene(scene);
         stage.show();
+        estoque.fecharEstoque();
     }
 
     static void setRoot(String fxml) throws IOException {
