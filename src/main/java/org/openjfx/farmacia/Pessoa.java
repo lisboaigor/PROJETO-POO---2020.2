@@ -1,4 +1,4 @@
-package org.openjfx.farmacia.controller.pessoa;
+package org.openjfx.farmacia;
 
 public abstract class Pessoa {
 	protected String nome;
