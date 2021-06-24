@@ -1,21 +1,28 @@
 package org.openjfx.farmacia.controller.produto;
 
-public class Produto {
+public final class Produto {
+	private final String codigo;
 	private String nome;
 	private String fabricante;
-	private String codigo;
+	private String categoria;
 	
 	private double preco;
 	private int estoque;
 	
-	public Produto(String nome, String fabricante, String codigo, double preco, int estoque) {
+	public Produto(String codigo, String nome, String fabricante, String categoria, double preco, int estoque) {
 		super();
+		this.codigo = codigo;
 		this.nome = nome;
 		this.fabricante = fabricante;
-		this.codigo = codigo;
+		this.categoria = categoria;
 		this.preco = preco;
 		this.estoque = estoque;
 	}
+	
+	public void vender(int quantidadeVendida) {
+		estoque -= quantidadeVendida;
+	}
+	
 
 	public String getNome() {
 		return nome;
@@ -37,10 +44,6 @@ public class Produto {
 		return codigo;
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
-
 	public double getPreco() {
 		return preco;
 	}
@@ -57,10 +60,16 @@ public class Produto {
 		this.estoque = estoque;
 	}
 
-	@Override
-	public String toString() {
-		return "Produto [nome=" + nome + ", fabricante=" + fabricante + ", codigo=" + codigo + ", preco=" + preco
-				+ ", estoque=" + estoque + "]";
+	public String getCategoria() {
+		return categoria;
 	}
 
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+	
+	@Override
+	public String toString() {
+		return codigo + " " + nome + " " + fabricante + " " + categoria + " " + preco + " " + estoque;
+	}
 }
