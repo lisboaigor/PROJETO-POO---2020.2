@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 import java.util.HashSet;
 import java.util.Set;
 
-public class EstoqueController {
+public class EstoqueController implements Controller {
 	static final String SEPARATOR = System.getProperty("file.separator");
 	static final String ESTOQUE_PATH = "src" + SEPARATOR + "main" + SEPARATOR + "java" + SEPARATOR + "org" + SEPARATOR + 
 									   "openjfx" + SEPARATOR + "farmacia" + SEPARATOR + "model" + SEPARATOR + "estoque.txt";
@@ -21,14 +21,17 @@ public class EstoqueController {
 		this.estoque = new HashSet<Produto>();
 	}
 	
+	@Override
 	public void imprimirEstoque() {
 		estoque.forEach(produto -> System.out.println(produto.toString()));
 	}
-
+	
+	@Override
 	public void cadastrarProduto(Produto produto) {
 		estoque.add(produto);
 	};
 
+	@SuppressWarnings("unused")
 	private Produto strToProduto(String strProduto) {
 		String[] informacoes = strProduto.split(";");
 
@@ -37,23 +40,26 @@ public class EstoqueController {
 		return produto;
 	}
 	
-	void acessarProduto(/* id (arg) */) {
+	/*
+	void acessarProduto( id (arg) ) {
 		//toString
 	};
 
 
-	void removerProduto(/* id (arg) */) {
+	void removerProduto( id (arg) ) {
 		// varre a coluna de ID até encontra o ID passado como arg
 		// deleta a row
 		// (https://stackoverflow.com/questions/27097810/delete-a-row-in-csv-file)
 	};
 
 	// aplicar overload
-	void atualizarProduto(/* id, propriedade (args) */) {
+	void atualizarProduto( id, propriedade (args)) {
 		// varre a coluna de ID até encontra o ID passado como arg
 		// atualiza a propriedade
 	};
+	*/
 	
+	@Override
 	public void inicializarEstoque() throws IOException {
 		try (BufferedReader buffer = new BufferedReader(new FileReader(ESTOQUE_PATH))) {
 			//buffer.lines().forEach(line -> estoque.add(strToProduto(line)));
@@ -68,7 +74,8 @@ public class EstoqueController {
 			file.close();
 		}
 	}
-
+	
+	@Override
 	public void fecharEstoque() {
 		try (BufferedWriter buffer = new BufferedWriter(new FileWriter(ESTOQUE_PATH))) {
 			PrintWriter printer = new PrintWriter(buffer);
