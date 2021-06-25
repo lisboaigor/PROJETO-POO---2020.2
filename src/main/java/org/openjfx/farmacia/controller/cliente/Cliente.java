@@ -1,10 +1,20 @@
 package org.openjfx.farmacia.controller.cliente;
 
-import org.openjfx.farmacia.Pessoa;
-import org.openjfx.farmacia.controller.produto.Produto;
+import org.openjfx.farmacia.controller.Pessoa;
 
 public final class Cliente extends Pessoa {
-	public final void comprarProduto(Produto produto) {
-		
+	public Cliente(String nome) {
+		setNome(nome);
+	}
+	
+	public Cliente(String nome, String cpf) {
+		setNome(nome);
+		setCpf(cpf);
+	}
+	
+	public Cliente(String nome, String cpf, int idade) {
+		setNome(nome);
+		setCpf(cpf);
+		setIdade(idade);
 	}
 }
