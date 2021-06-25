@@ -19,6 +19,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         EstoqueController estoque = new EstoqueController();
         estoque.inicializarEstoque();
+        //estoque.cadastrarProduto(new Produto("1232131", "Dipirona", "NASA", "X", "Bill Gates",200.0,20));
         
         estoque.imprimirEstoque();
       
