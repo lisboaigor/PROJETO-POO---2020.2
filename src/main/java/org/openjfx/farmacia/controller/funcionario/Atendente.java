@@ -1,8 +1,8 @@
 package org.openjfx.farmacia.controller.funcionario;
 
-public final class Atendente extends Funcionario {
-	public Atendente(String nome) {
-		setNome(nome);
+public final class Atendente extends Funcionario {	
+	public Atendente(String cpf) {
+		setCpf(cpf);
 	}
 	
 	public Atendente(String nome, String cpf) {
