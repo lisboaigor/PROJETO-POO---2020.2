@@ -56,7 +56,13 @@ public class EstoqueController {
 	
 	public void inicializarEstoque() throws IOException {
 		try (BufferedReader buffer = new BufferedReader(new FileReader(ESTOQUE_PATH))) {
-			buffer.lines().forEach(line -> estoque.add(strToProduto(line)));
+			//buffer.lines().forEach(line -> estoque.add(strToProduto(line)));
+			/*
+			String line;
+			while(!(line = buffer.readLine()).isBlank()) {
+				estoque.add(strToProduto(line))
+			}
+			*/
 		} catch (Exception e) {
 			FileWriter file = new FileWriter(ESTOQUE_PATH, false);
 			file.close();
