@@ -1,15 +1,28 @@
 package org.openjfx.farmacia.controller.funcionario;
 
-import org.openjfx.farmacia.controller.cliente.Cliente;
-import org.openjfx.farmacia.controller.produto.Produto;
-
 public final class Atendente extends Funcionario {
-	public Atendente() {
-		super();
-	}
-
-	public void venderProduto(Cliente cliente, Produto produto) {
-		
+	public Atendente(String nome) {
+		setNome(nome);
 	}
 	
+	public Atendente(String nome, String cpf) {
+		setNome(nome);
+		setCpf(cpf);
+	}
+	
+	public Atendente(String nome, String cpf, int idade) {
+		setNome(nome);
+		setCpf(cpf);
+		setIdade(idade);
+	}
+	
+	@Override
+	public void setSalario(float salario) {
+		this.salario = salario;
+	}
+	
+	@Override
+	public float getSalario() {
+		return salario;
+	}	
 }
