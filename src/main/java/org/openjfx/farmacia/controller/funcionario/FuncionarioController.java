@@ -19,7 +19,9 @@ public class FuncionarioController implements Controller {
 	public void demitirFuncionario(Funcionario funcionario) {};
 	
 	@Override
-	public void obterFolhaDePagamento() {};
+	public void obterFolhaDePagamento() {
+		// 
+	};
 	
 	public void obterFolhaDePagamento(Funcionario funcionario) {};
 	
