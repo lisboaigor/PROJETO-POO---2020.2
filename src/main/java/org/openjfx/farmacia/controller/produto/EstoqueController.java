@@ -2,17 +2,21 @@ package org.openjfx.farmacia.controller.produto;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.HashSet;
 import java.util.Set;
 
 public class EstoqueController implements Controller {
 	static final String SEPARATOR = System.getProperty("file.separator");
-	static final String ESTOQUE_PATH = "src" + SEPARATOR + "main" + SEPARATOR + "java" + SEPARATOR + "org" + SEPARATOR + 
-									   "openjfx" + SEPARATOR + "farmacia" + SEPARATOR + "model" + SEPARATOR + "estoque.txt";
+	static final String ESTOQUE_PATH = "src" + SEPARATOR + "main" + SEPARATOR + 
+										"java" + SEPARATOR + "org" + SEPARATOR + 
+									   "openjfx" + SEPARATOR + "farmacia" + 
+										SEPARATOR + "model" + SEPARATOR + "estoque.txt";
 	
 	private Set<Produto> estoque;
 	
@@ -29,7 +33,7 @@ public class EstoqueController implements Controller {
 	@Override
 	public void cadastrarProduto(Produto produto) {
 		estoque.add(produto);
-	};
+	}
 
 	@SuppressWarnings("unused")
 	private Produto strToProduto(String strProduto) {
@@ -40,36 +44,22 @@ public class EstoqueController implements Controller {
 		return produto;
 	}
 	
-	/*
-	void acessarProduto( id (arg) ) {
-		//toString
-	};
-
-
-	void removerProduto( id (arg) ) {
-		// varre a coluna de ID até encontra o ID passado como arg
-		// deleta a row
-		// (https://stackoverflow.com/questions/27097810/delete-a-row-in-csv-file)
-	};
-
-	// aplicar overload
-	void atualizarProduto( id, propriedade (args)) {
-		// varre a coluna de ID até encontra o ID passado como arg
-		// atualiza a propriedade
-	};
-	*/
-	
 	@Override
 	public void inicializarEstoque() throws IOException {
-		try (BufferedReader buffer = new BufferedReader(new FileReader(ESTOQUE_PATH))) {
-			//buffer.lines().forEach(line -> estoque.add(strToProduto(line)));
-			/*
-			String line;
-			while(!(line = buffer.readLine()).isBlank()) {
-				estoque.add(strToProduto(line))
-			}
-			*/
-		} catch (Exception e) {
+		try (FileInputStream entrada = new FileInputStream(ESTOQUE_PATH)) {
+			InputStreamReader entradaFormatada = new InputStreamReader(entrada);
+			BufferedReader entradaString = new BufferedReader(entradaFormatada);
+			
+			String linha = entradaString.readLine();
+			  
+			while(linha != null) {	 
+				System.out.println(linha);
+				linha = entradaString.readLine();
+				
+			}			
+		}
+		
+		catch (Exception e) {
 			FileWriter file = new FileWriter(ESTOQUE_PATH, false);
 			file.close();
 		}
