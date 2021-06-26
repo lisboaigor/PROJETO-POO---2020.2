@@ -8,11 +8,11 @@ public class FuncionarioController implements Controller {
 	}
 	
 	public void contratarFuncionario(String nome, String cpf, int idade) {
-		Atendente atendente = cadastrarAtendente();
+		Funcionario funcionario = cadastrarAtendente(nome, cpf, idade);
 	}
 	
-	private Atendente cadastrarAtendente() {
-		return new Atendente();
+	private Atendente cadastrarAtendente(String nome, String cpf, int idade) {
+		return new Atendente(nome, cpf, idade);
 	}
 	
 	@Override
