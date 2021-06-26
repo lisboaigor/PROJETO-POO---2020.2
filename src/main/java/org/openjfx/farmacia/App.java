@@ -12,7 +12,6 @@ import org.openjfx.farmacia.controller.produto.EstoqueController;
 import org.openjfx.farmacia.controller.produto.Produto;
 
 public class App extends Application {
-
     private static Scene scene;
 
     @Override
