@@ -7,6 +7,7 @@ public class FuncionarioController implements Controller {
 		setQuantidadeDeFuncionarios(1);
 	}
 	
+	@Override
 	public void contratarFuncionario(String nome, String cpf, int idade) {
 		Funcionario funcionario = cadastrarAtendente(nome, cpf, idade);
 	}
