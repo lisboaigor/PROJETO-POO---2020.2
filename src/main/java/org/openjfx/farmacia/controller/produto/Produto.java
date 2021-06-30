@@ -1,7 +1,7 @@
 package org.openjfx.farmacia.controller.produto;
 
 public final class Produto {
-	private final String codigo;
+	private final String CODIGO;
 	private String nome;
 	private String fabricante;
 	private String categoria;
@@ -13,7 +13,7 @@ public final class Produto {
 	public Produto(String codigo, String nome, String fabricante, String categoria, String formula, double preco,
 			int estoque) {
 		super();
-		this.codigo = codigo;
+		this.CODIGO = codigo;
 		this.nome = nome;
 		this.fabricante = fabricante;
 		this.categoria = categoria;
@@ -75,11 +75,11 @@ public final class Produto {
 	}
 
 	public String getCodigo() {
-		return codigo;
+		return CODIGO;
 	}
 
 	@Override
 	public String toString() {
-		return codigo + ";" + nome + ";" + fabricante + ";" + categoria + ";" + formula + ";" + preco + ";" + estoque;
+		return CODIGO + ";" + nome + ";" + fabricante + ";" + categoria + ";" + formula + ";" + preco + ";" + estoque;
 	}
 }
