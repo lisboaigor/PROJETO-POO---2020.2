@@ -18,7 +18,6 @@ public class EstoqueController implements Controller {
 	private Set<Produto> estoque;
 
 	public EstoqueController() {
-		super();
 		this.estoque = new HashSet<Produto>();
 	}
 
