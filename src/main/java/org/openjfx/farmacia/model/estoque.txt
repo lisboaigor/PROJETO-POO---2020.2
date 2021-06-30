@@ -1,0 +1,2 @@
+123456;Nimesulida;EMC;X;Nimesulida;200.0;20
+1232131;Dipirona;NASA;X;Bill Gates;200.0;20

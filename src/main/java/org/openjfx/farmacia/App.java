@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import org.openjfx.farmacia.controller.produto.EstoqueController;
-import org.openjfx.farmacia.controller.produto.Produto;
 
 public class App extends Application {
     private static Scene scene;
@@ -18,7 +17,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         EstoqueController estoque = new EstoqueController();
         estoque.inicializarEstoque();
-        //estoque.cadastrarProduto(new Produto("1232131", "Dipirona", "NASA", "X", "Bill Gates",200.0,20));
+        //estoque.cadastrarProduto(new Produto("123456", "Nimesulida", "EMC", "X", "Nimesulida",200.0,20));
         
         estoque.imprimirEstoque();
       
