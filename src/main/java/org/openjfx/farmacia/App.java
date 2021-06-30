@@ -17,11 +17,9 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         EstoqueController estoque = new EstoqueController();
         estoque.inicializarEstoque();
-        //estoque.cadastrarProduto(new Produto("123456", "Nimesulida", "EMC", "X", "Nimesulida",200.0,20));
-        
         estoque.imprimirEstoque();
       
-    	scene = new Scene(loadFXML("telaInicial"), 800, 500);
+    	scene = new Scene(loadFXML("cenaPrincipal"), 800, 500);
         stage.setScene(scene);
         stage.show();
         estoque.fecharEstoque();
