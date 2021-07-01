@@ -1,3 +1,3 @@
+1232131;Dipirona;NASA;X;Bill Gates;200.0;20
 123456;Nimesulida;EMC;X;Nimesulida;200.0;20
 123456;Sufadiazina de Prata;EMC;X;Sufadizina de Prata;200.0;20
-1232131;Dipirona;NASA;X;Bill Gates;200.0;20

@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import org.openjfx.farmacia.controller.produto.Cesta;
 import org.openjfx.farmacia.controller.produto.EstoqueController;
 
 public class App extends Application {
@@ -16,6 +17,8 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         EstoqueController estoque = new EstoqueController();
+		Cesta cesta = new Cesta();
+        
         estoque.inicializarEstoque();
         estoque.imprimirEstoque();
       

@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public interface Controller {
 	public void imprimirEstoque();
-	public void cadastrarProduto(Produto produto);
+	public void cadastrarProduto(ProdutoEstoque produto);
 	public void inicializarEstoque() throws IOException;
 	public void fecharEstoque();
 }
