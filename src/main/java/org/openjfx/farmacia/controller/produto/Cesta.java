@@ -49,7 +49,7 @@ public final class Cesta {
 	public void registrarVenda() {
 		try (BufferedWriter buffer = new BufferedWriter(new FileWriter(VENDAS_PATH))) {
 			PrintWriter writter = new PrintWriter(buffer);
-			cesta.forEach(item -> writter.println(cliente.toString() + ";" + item.toString()));
+			cesta.forEach(item -> writter.println(cliente.getCpf()+ ";" + item.toString()));
 			cesta.clear();
 			writter.close();
 		} catch (Exception e) {

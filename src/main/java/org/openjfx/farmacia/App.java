@@ -20,7 +20,7 @@ public class App extends Application {
 		Cesta cesta = new Cesta();
         
         estoque.inicializarEstoque();
-        estoque.imprimirEstoque();
+        estoque.mostrarEstoque();
       
     	scene = new Scene(loadFXML("cenaPrincipal"), 800, 500);
         stage.setScene(scene);

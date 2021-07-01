@@ -13,7 +13,7 @@ import java.util.Set;
 public class EstoqueController implements Controller {
 	private static final String SEPARATOR = System.getProperty("file.separator");
 	private static final String ESTOQUE_PATH = "src" + SEPARATOR + "main" + SEPARATOR + "java" + SEPARATOR + "org" + SEPARATOR
-			+ "openjfx" + SEPARATOR + "farmacia" + SEPARATOR + "model" + SEPARATOR + "estoque" + SEPARATOR +"estoque.txt";
+			+ "openjfx" + SEPARATOR + "farmacia" + SEPARATOR + "model" + SEPARATOR + "estoque" + SEPARATOR + "estoque.txt";
 
 	private Set<ProdutoEstoque> estoque;
 
@@ -23,7 +23,7 @@ public class EstoqueController implements Controller {
 	}
 
 	@Override
-	public void imprimirEstoque() {
+	public void mostrarEstoque() {
 		estoque.forEach(produto -> System.out.println(produto.toString()));
 	}
 
