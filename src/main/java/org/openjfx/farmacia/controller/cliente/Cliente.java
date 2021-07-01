@@ -17,4 +17,11 @@ public final class Cliente extends Pessoa {
 		setCpf(cpf);
 		setIdade(idade);
 	}
+
+	@Override
+	public String toString() {
+		return nome + ";" + cpf;
+	}
+	
+	
 }

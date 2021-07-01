@@ -11,15 +11,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class EstoqueController implements Controller {
-	static final String SEPARATOR = System.getProperty("file.separator");
-	static final String ESTOQUE_PATH = "src" + SEPARATOR + "main" + SEPARATOR + "java" + SEPARATOR + "org" + SEPARATOR
-			+ "openjfx" + SEPARATOR + "farmacia" + SEPARATOR + "model" + SEPARATOR + "estoque.txt";
+	private static final String SEPARATOR = System.getProperty("file.separator");
+	private static final String ESTOQUE_PATH = "src" + SEPARATOR + "main" + SEPARATOR + "java" + SEPARATOR + "org" + SEPARATOR
+			+ "openjfx" + SEPARATOR + "farmacia" + SEPARATOR + "model" + SEPARATOR + "estoque" + SEPARATOR +"estoque.txt";
 
-	private Set<Produto> estoque;
+	private Set<ProdutoEstoque> estoque;
 
 	public EstoqueController() {
 		super();
-		this.estoque = new HashSet<Produto>();
+		this.estoque = new HashSet<ProdutoEstoque>();
 	}
 
 	@Override
@@ -28,14 +28,14 @@ public class EstoqueController implements Controller {
 	}
 
 	@Override
-	public void cadastrarProduto(Produto produto) {
+	public void cadastrarProduto(ProdutoEstoque produto) {
 		estoque.add(produto);
 	}
 
-	private Produto strToProduto(String strProduto) {
+	private ProdutoEstoque strToProduto(String strProduto) {
 		String[] informacoes = strProduto.split(";");
 
-		Produto produto = new Produto(informacoes[0], informacoes[1], informacoes[2], informacoes[3], informacoes[4],
+		ProdutoEstoque produto = new ProdutoEstoque(informacoes[0], informacoes[1], informacoes[2], informacoes[3], informacoes[4],
 				Double.parseDouble(informacoes[5]), Integer.parseInt(informacoes[6]));
 		return produto;
 	}
@@ -54,12 +54,10 @@ public class EstoqueController implements Controller {
 	public void fecharEstoque() {
 		try (BufferedWriter buffer = new BufferedWriter(new FileWriter(ESTOQUE_PATH, false))) {
 			PrintWriter printer = new PrintWriter(buffer);
-
 			estoque.forEach(produto -> printer.println(produto.toString()));
-
+			estoque.clear();			
 			printer.close();
 			buffer.close();
-			estoque.clear();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
