@@ -1,4 +1,4 @@
-# Lista de funcionalidades básicas: - <code>[60%]</code>
+# Lista de funcionalidades básicas: - <code>[70%]</code>
 
 -   [X] Listar todos os produtos cadastrados
 -   [X] Listar os produtos disponíveis no estoque
@@ -9,5 +9,5 @@
 -   [X] Listar todas as vendas
 -   [ ] Listar compras de um determinado cliente
 -   [X] Listar produtos por categorias
--   [ ] Listar produtos excluídos ou fora do estoque
+-   [X] Listar produtos excluídos ou fora do estoque
 
