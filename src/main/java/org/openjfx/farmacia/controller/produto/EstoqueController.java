@@ -8,7 +8,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class EstoqueController implements Controller {
 	private static final String SEPARATOR = System.getProperty("file.separator");
@@ -61,5 +63,13 @@ public class EstoqueController implements Controller {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public List<ProdutoEstoque> filtrarCategoria(String categoria) {
+		List<ProdutoEstoque> lista = estoque.stream()
+											.filter(produto -> produto.getCategoria().toUpperCase().equals(categoria))
+											.collect(Collectors.toList());
+		return lista;
 	}
 }
