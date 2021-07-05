@@ -17,6 +17,9 @@ public class EstoqueController implements Controller {
 	private static final String ESTOQUE_PATH = "src" + SEPARATOR + "main" + SEPARATOR + "java" + SEPARATOR + "org" + SEPARATOR
 			+ "openjfx" + SEPARATOR + "farmacia" + SEPARATOR + "model" + SEPARATOR + "estoque" + SEPARATOR +"estoque.txt";
 
+	private static final String EXCLUIDOS = "src" + SEPARATOR + "main" + SEPARATOR + "java" + SEPARATOR + "org" + SEPARATOR
+	+ "openjfx" + SEPARATOR + "farmacia" + SEPARATOR + "model" + SEPARATOR + "estoque" + SEPARATOR + "excluidos.txt";
+
 	private Set<ProdutoEstoque> estoque;
 
 	public EstoqueController() {
@@ -32,6 +35,16 @@ public class EstoqueController implements Controller {
 	@Override
 	public void cadastrarProduto(ProdutoEstoque produto) {
 		estoque.add(produto);
+	}
+
+	@Override
+	public void excluirProduto(ProdutoEstoque produto) {
+		estoque.remove(produto);
+		try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(EXCLUIDOS, true)))){
+			writer.println(produto.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private ProdutoEstoque strToProduto(String strProduto) {
@@ -72,4 +85,6 @@ public class EstoqueController implements Controller {
 											.collect(Collectors.toList());
 		return lista;
 	}
+
+
 }
