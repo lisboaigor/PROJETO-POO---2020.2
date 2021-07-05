@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 
 public class EstoqueController implements Controller {
 	private static final String SEPARATOR = System.getProperty("file.separator");
+	
 	private static final String ESTOQUE_PATH = "src" + SEPARATOR + "main" + SEPARATOR + "java" + SEPARATOR + "org" + SEPARATOR
 			+ "openjfx" + SEPARATOR + "farmacia" + SEPARATOR + "model" + SEPARATOR + "estoque" + SEPARATOR +"estoque.txt";
 
@@ -86,5 +88,18 @@ public class EstoqueController implements Controller {
 		return lista;
 	}
 
+	@Override
+	public List<ProdutoEstoque> listarExcluidos() {
+		List<ProdutoEstoque> excluidos = new ArrayList<ProdutoEstoque>();
+
+		try (BufferedReader buffer = new BufferedReader(new FileReader(EXCLUIDOS))){
+			buffer.lines().forEach(produto -> excluidos.add(strToProduto(produto)));
+			return excluidos;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 
 }
