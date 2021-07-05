@@ -1,12 +1,3 @@
-
-# Table of Contents
-
-1.  [Lista de funcionalidades básicas: - <code>[60%]</code>](#orga92f154)
-
-
-
-<a id="orga92f154"></a>
-
 # Lista de funcionalidades básicas: - <code>[60%]</code>
 
 -   [X] Listar todos os produtos cadastrados
