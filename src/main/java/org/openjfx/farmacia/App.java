@@ -24,6 +24,7 @@ public class App extends Application {
       
     	scene = new Scene(loadFXML("cenaPrincipal"), 800, 500);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
         estoque.fecharEstoque();
     }
@@ -40,5 +41,5 @@ public class App extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
+    
 }
