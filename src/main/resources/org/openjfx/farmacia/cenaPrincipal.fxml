@@ -56,9 +56,9 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Text layoutX="229.0" layoutY="484.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade na cesta:" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="432.0" />
-      <Text layoutX="452.0" layoutY="484.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor total: R$" AnchorPane.bottomAnchor="12.0" />
-      <Button alignment="CENTER" layoutX="427.0" layoutY="423.0" mnemonicParsing="false" text="Ir para a cesta" textAlignment="CENTER" />
-      <Button alignment="CENTER" layoutX="261.0" layoutY="423.0" mnemonicParsing="false" text="Adicionar a cesta" textAlignment="CENTER" />
+      <Text layoutX="540.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade na cesta:" AnchorPane.bottomAnchor="56.98828125" AnchorPane.leftAnchor="540.0" AnchorPane.rightAnchor="148.625" />
+      <Text layoutX="540.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor total: R$" AnchorPane.bottomAnchor="35.98828125" />
+      <Button alignment="CENTER" layoutX="169.0" layoutY="423.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" text="Ir para a cesta" textAlignment="CENTER" />
+      <Button alignment="CENTER" layoutX="50.0" layoutY="423.0" mnemonicParsing="false" text="Adicionar a cesta" textAlignment="CENTER" />
    </children>
 </AnchorPane>
