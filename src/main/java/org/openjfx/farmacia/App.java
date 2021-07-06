@@ -16,17 +16,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        EstoqueController estoque = new EstoqueController();
-		Cesta cesta = new Cesta();
-        
-        estoque.inicializarEstoque();
-        estoque.imprimirEstoque();
-      
     	scene = new Scene(loadFXML("cenaPrincipal"), 800, 500);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        estoque.fecharEstoque();
     }
 
     static void setRoot(String fxml) throws IOException {
