@@ -22,7 +22,7 @@ public class EstoqueController implements Controller {
 	private static final String EXCLUIDOS = "src" + SEPARATOR + "main" + SEPARATOR + "java" + SEPARATOR + "org" + SEPARATOR
 	+ "openjfx" + SEPARATOR + "farmacia" + SEPARATOR + "model" + SEPARATOR + "estoque" + SEPARATOR + "excluidos.txt";
 
-	private Set<ProdutoEstoque> estoque;
+	private final Set<ProdutoEstoque> estoque;
 
 	public EstoqueController() {
 		super();
@@ -102,4 +102,7 @@ public class EstoqueController implements Controller {
 		return null;
 	}
 
+	public Set<ProdutoEstoque> getEstoque() {
+		return estoque;
+	}
 }

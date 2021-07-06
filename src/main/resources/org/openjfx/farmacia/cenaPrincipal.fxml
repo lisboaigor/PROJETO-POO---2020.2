@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.farmacia.controller.viewController.CenaPrincipalController">
    <children>
-      <MenuBar layoutY="1.0" prefHeight="27.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar layoutY="1.0" onMouseClicked="#adicionarProdutoCesta" prefHeight="27.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <menus>
             <Menu mnemonicParsing="false" text="Consulta">
                <items>
@@ -42,7 +42,7 @@
          </items>
       </MenuButton>
       <TextField layoutX="186.0" layoutY="58.0" prefHeight="24.0" prefWidth="564.0" promptText="Caixa de pesquisa..." AnchorPane.leftAnchor="186.0" AnchorPane.rightAnchor="50.0" />
-      <TableView layoutX="50.0" layoutY="100.0" prefHeight="300.0" prefWidth="700.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="100.0">
+      <TableView fx:id="tabela" layoutX="50.0" layoutY="100.0" prefHeight="300.0" prefWidth="700.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="100.0">
         <columns>
           <TableColumn prefWidth="75.0" text="Codigo" />
             <TableColumn minWidth="-Infinity" prefWidth="151.0" text="Nome" />
@@ -59,6 +59,6 @@
       <Text layoutX="540.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade na cesta:" AnchorPane.bottomAnchor="56.98828125" AnchorPane.leftAnchor="540.0" AnchorPane.rightAnchor="148.625" />
       <Text layoutX="540.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor total: R$" AnchorPane.bottomAnchor="35.98828125" />
       <Button alignment="CENTER" layoutX="169.0" layoutY="423.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" text="Ir para a cesta" textAlignment="CENTER" />
-      <Button alignment="CENTER" layoutX="50.0" layoutY="423.0" mnemonicParsing="false" text="Adicionar a cesta" textAlignment="CENTER" />
+      <Button fx:id="adicionarCesta" alignment="CENTER" layoutX="50.0" layoutY="423.0" mnemonicParsing="false" onMouseClicked="#adicionarProdutoCesta" text="Adicionar a cesta" textAlignment="CENTER" />
    </children>
 </AnchorPane>
