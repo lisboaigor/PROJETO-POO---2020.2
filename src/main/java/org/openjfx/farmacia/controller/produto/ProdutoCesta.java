@@ -1,32 +1,30 @@
 package org.openjfx.farmacia.controller.produto;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class ProdutoCesta extends Produto {
-	private int quantidade;
+	protected SimpleIntegerProperty quantidade;
 
-	public ProdutoCesta(String codigo, String nome, String fabricante, String categoria, String formula, double preco,
-			int quantidade) {
+	public ProdutoCesta(SimpleStringProperty codigo, SimpleStringProperty nome, SimpleStringProperty fabricante,
+						SimpleStringProperty categoria, SimpleStringProperty formula, SimpleDoubleProperty preco,
+						SimpleIntegerProperty quantidade) {
 		super();
-		this.setCodigo(codigo);
-		this.setNome(nome);
-		this.setFabricante(fabricante);
-		this.setCategoria(categoria);
-		this.setFormula(formula);
-		this.setPreco(preco);
+		this.codigo = codigo;
+		this.nome = nome;
+		this.fabricante = fabricante;
+		this.categoria = categoria;
+		this.formula = formula;
+		this.preco = preco;
 		this.quantidade = quantidade;
 	}
 
-	public int getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
 
 	@Override
 	public String toString() {
-		return this.getCodigo() + ";" + this.getNome() + ";" + this.getFabricante() + ";" + this.getCategoria() + ";"
-				+ this.getFormula() + ";" + this.getPreco() + ";" + this.getQuantidade();
+		return this.codigo.get() + ";" + this.nome.get() + ";" + this.fabricante.get() + ";" + this.categoria.get() + ";"
+				+ this.formula.get() + ";" + this.preco.get() + ";" + this.quantidade.get();
 	}
 
 }

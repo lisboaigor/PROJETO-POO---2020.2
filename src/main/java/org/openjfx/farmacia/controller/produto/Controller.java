@@ -7,7 +7,6 @@ public interface Controller {
 	public void imprimirEstoque();
 	public void cadastrarProduto(ProdutoEstoque produto);
 	public void excluirProduto(ProdutoEstoque produto);
-	public void inicializarEstoque() throws IOException;
 	public void fecharEstoque();
 	public List<ProdutoEstoque> filtrarCategoria(String categoria);
 	public List<ProdutoEstoque> listarExcluidos();

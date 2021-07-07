@@ -1,59 +1,85 @@
 package org.openjfx.farmacia.controller.produto;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public abstract class Produto {
-	private String codigo;
-	private String nome;
-	private String fabricante;
-	private String categoria;
-	private String formula;
-	private double preco;
+    protected SimpleStringProperty codigo;
+    protected SimpleStringProperty nome;
+    protected SimpleStringProperty fabricante;
+    protected SimpleStringProperty categoria;
+    protected SimpleStringProperty formula;
+    protected SimpleDoubleProperty preco;
 
-	public String getCodigo() {
-		return codigo;
-	}
+    public String getCodigo() {
+        return codigo.get();
+    }
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
+    public SimpleStringProperty codigoProperty() {
+        return codigo;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public void setCodigo(String codigo) {
+        this.codigo.set(codigo);
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getNome() {
+        return nome.get();
+    }
 
-	public String getFabricante() {
-		return fabricante;
-	}
+    public SimpleStringProperty nomeProperty() {
+        return nome;
+    }
 
-	public void setFabricante(String fabricante) {
-		this.fabricante = fabricante;
-	}
+    public void setNome(String nome) {
+        this.nome.set(nome);
+    }
 
-	public String getCategoria() {
-		return categoria;
-	}
+    public String getFabricante() {
+        return fabricante.get();
+    }
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
+    public SimpleStringProperty fabricanteProperty() {
+        return fabricante;
+    }
 
-	public String getFormula() {
-		return formula;
-	}
+    public void setFabricante(String fabricante) {
+        this.fabricante.set(fabricante);
+    }
 
-	public void setFormula(String formula) {
-		this.formula = formula;
-	}
+    public String getCategoria() {
+        return categoria.get();
+    }
 
-	public double getPreco() {
-		return preco;
-	}
+    public SimpleStringProperty categoriaProperty() {
+        return categoria;
+    }
 
-	public void setPreco(double preco) {
-		this.preco = preco;
-	}
+    public void setCategoria(String categoria) {
+        this.categoria.set(categoria);
+    }
 
+    public String getFormula() {
+        return formula.get();
+    }
+
+    public SimpleStringProperty formulaProperty() {
+        return formula;
+    }
+
+    public void setFormula(String formula) {
+        this.formula.set(formula);
+    }
+
+    public double getPreco() {
+        return preco.get();
+    }
+
+    public SimpleDoubleProperty precoProperty() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco.set(preco);
+    }
 }
