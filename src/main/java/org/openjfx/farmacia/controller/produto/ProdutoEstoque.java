@@ -1,6 +1,5 @@
 package org.openjfx.farmacia.controller.produto;
 
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -20,10 +19,15 @@ public class ProdutoEstoque extends Produto {
 		this.quantidade= quantidade;
 	}
 
-	public SimpleIntegerProperty getQuantidade() {
+	@SuppressWarnings("unused")
+	public SimpleIntegerProperty quantidadeProperty() {
 		return quantidade;
 	}
 
+	@SuppressWarnings("unused")
+	public Integer getQuantidade() { return quantidade.get();}
+
+	@SuppressWarnings("unused")
 	public void setQuantidade(SimpleIntegerProperty quantidade) {
 		this.quantidade = quantidade;
 	}

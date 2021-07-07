@@ -1,7 +1,6 @@
 package org.openjfx.farmacia.controller.produto;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.time.LocalDate;
@@ -23,17 +22,9 @@ public final class Cesta {
 	private Cliente cliente;
 
 	public Cesta() {
-		this.cesta = new ArrayList<ProdutoCesta>();
+		this.cesta = new ArrayList<>();
 		this.valorTotal = 0.0;
 		this.cliente = null;
-
-		try {
-			File file = new File(VENDAS_PATH);
-			if (!file.exists())
-				file.createNewFile();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void removerProduto(ProdutoCesta produto) {
