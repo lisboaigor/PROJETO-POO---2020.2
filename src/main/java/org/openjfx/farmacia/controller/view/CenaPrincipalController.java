@@ -3,13 +3,12 @@ package org.openjfx.farmacia.controller.view;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import org.openjfx.farmacia.controller.produto.Cesta;
+import org.openjfx.farmacia.controller.cliente.ClienteController;
 import org.openjfx.farmacia.controller.produto.EstoqueController;
 import org.openjfx.farmacia.controller.produto.ProdutoEstoque;
 
@@ -21,8 +20,6 @@ public class CenaPrincipalController implements Initializable {
     // Campos tabela de estoque
     @FXML
     public TableView<ProdutoEstoque> tabelaEstoque;
-    @FXML
-    public Button adicionarCesta;
     @FXML
     TableColumn<ProdutoEstoque, String> codigoTabela;
     @FXML
@@ -38,23 +35,13 @@ public class CenaPrincipalController implements Initializable {
     @FXML
     TableColumn<ProdutoEstoque, Double> precoTabela;
 
-    // Campos cesta de compras
+    // Campos tabela de clientes
     @FXML
-    public TableView cesta;
+    public TableView tabelaClientes;
     @FXML
-    public TableColumn codigoCesta;
+    public TableColumn cpf;
     @FXML
-    public TableColumn nomeCesta;
-    @FXML
-    public TableColumn fabricanteCesta;
-    @FXML
-    public TableColumn categoriaCesta;
-    @FXML
-    public TableColumn formulaCesta;
-    @FXML
-    public TableColumn unidadesCesta;
-    @FXML
-    public TableColumn precoCesta;
+    public TableColumn nome;
 
     // Inicializador de tabelas
     @Override
@@ -67,18 +54,14 @@ public class CenaPrincipalController implements Initializable {
         precoTabela.setCellValueFactory(new PropertyValueFactory<>("preco"));
         quantidadeTabela.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
 
-        codigoCesta.setCellValueFactory(new PropertyValueFactory<>("codigo"));
-        nomeCesta.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        fabricanteCesta.setCellValueFactory(new PropertyValueFactory<>("fabricante"));
-        categoriaCesta.setCellValueFactory(new PropertyValueFactory<>("categoria"));
-        formulaCesta.setCellValueFactory(new PropertyValueFactory<>("formula"));
-        precoCesta.setCellValueFactory(new PropertyValueFactory<>("preco"));
-        unidadesCesta.setCellValueFactory(new PropertyValueFactory<>("unidades"));
+        cpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 
         tabelaEstoque.setItems(FXCollections.observableArrayList(new EstoqueController().getEstoque()));
-        cesta.setItems(FXCollections.observableArrayList(new Cesta().getCesta()));
+        tabelaClientes.setItems(FXCollections.observableArrayList(new ClienteController().getClientes()));
 
         rediensionarColunas(tabelaEstoque);
+        rediensionarColunas(tabelaClientes);
     }
 
     private static void rediensionarColunas(TableView<?> tabela) {
