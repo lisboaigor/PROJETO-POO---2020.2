@@ -15,7 +15,6 @@ public final class Cliente extends Pessoa {
 	public Cliente(String nome, String cpf, int idade) {
 		setNome(nome);
 		setCpf(cpf);
-		setIdade(idade);
 	}
 
 	@Override

@@ -20,7 +20,6 @@ public final class Gerente extends Funcionario {
 		setSalario(5*salarioMinimo);
 		setNome(nome);
 		setCpf(cpf);
-		setIdade(idade);
 	}
 	
 	@Override
@@ -35,6 +34,6 @@ public final class Gerente extends Funcionario {
 
 	@Override
 	public String toString() {
-		return getNome() + ";" + getCpf() + ";" + getIdade() + ";" + getSalario();
+		return getNome() + ";" + getCpf() + ";" + getSalario();
 	}
 }

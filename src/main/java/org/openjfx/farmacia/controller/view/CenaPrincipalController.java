@@ -8,6 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import org.openjfx.farmacia.controller.produto.Cesta;
 import org.openjfx.farmacia.controller.produto.EstoqueController;
 import org.openjfx.farmacia.controller.produto.ProdutoEstoque;
@@ -72,10 +73,29 @@ public class CenaPrincipalController implements Initializable {
         categoriaCesta.setCellValueFactory(new PropertyValueFactory<>("categoria"));
         formulaCesta.setCellValueFactory(new PropertyValueFactory<>("formula"));
         precoCesta.setCellValueFactory(new PropertyValueFactory<>("preco"));
-        unidadesCesta.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+        unidadesCesta.setCellValueFactory(new PropertyValueFactory<>("unidades"));
 
         tabelaEstoque.setItems(FXCollections.observableArrayList(new EstoqueController().getEstoque()));
         cesta.setItems(FXCollections.observableArrayList(new Cesta().getCesta()));
+
+        rediensionarColunas(tabelaEstoque);
+    }
+
+    private static void rediensionarColunas(TableView<?> tabela) {
+        tabela.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
+        tabela.getColumns().stream().forEach(coluna -> {
+            Text t = new Text(coluna.getText());
+            double max = t.getLayoutBounds().getWidth();
+            for (int i = 0; i < tabela.getItems().size(); i++)
+                if (coluna.getCellData(i) != null) {
+                    t = new Text(coluna.getCellData(i).toString());
+                    double largura = t.getLayoutBounds().getWidth();
+                    if (largura > max) {
+                        max = largura;
+                    }
+                }
+            coluna.setPrefWidth(max + 10.0d);
+        });
     }
 
     @SuppressWarnings("unused")

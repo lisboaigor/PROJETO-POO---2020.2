@@ -13,7 +13,6 @@ public final class Atendente extends Funcionario {
 	public Atendente(String nome, String cpf, int idade) {
 		setNome(nome);
 		setCpf(cpf);
-		setIdade(idade);
 	}
 	
 	@Override
