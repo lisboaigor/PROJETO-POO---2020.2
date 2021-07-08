@@ -1,7 +1,6 @@
 package org.openjfx.farmacia.controller.view;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -9,6 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import org.openjfx.farmacia.controller.produto.Cesta;
 import org.openjfx.farmacia.controller.produto.EstoqueController;
 import org.openjfx.farmacia.controller.produto.ProdutoEstoque;
 
@@ -16,38 +16,69 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CenaPrincipalController implements Initializable {
+
+    // Campos tabela de estoque
     @FXML
-    public TableView<ProdutoEstoque> tabela;
+    public TableView<ProdutoEstoque> tabelaEstoque;
     @FXML
     public Button adicionarCesta;
     @FXML
-    TableColumn<ProdutoEstoque, String> codigo;
+    TableColumn<ProdutoEstoque, String> codigoTabela;
     @FXML
-    TableColumn<ProdutoEstoque, String> nome;
+    TableColumn<ProdutoEstoque, String> nomeTabela;
     @FXML
-    TableColumn<ProdutoEstoque, String> fabricante;
+    TableColumn<ProdutoEstoque, String> fabricanteTabela;
     @FXML
-    TableColumn<ProdutoEstoque, String> categoria;
+    TableColumn<ProdutoEstoque, String> categoriaTabela;
     @FXML
-    TableColumn<ProdutoEstoque, String> formula;
+    TableColumn<ProdutoEstoque, String> formulaTabela;
     @FXML
-    TableColumn<ProdutoEstoque, Integer> quantidade;
+    TableColumn<ProdutoEstoque, Integer> quantidadeTabela;
     @FXML
-    TableColumn<ProdutoEstoque, Double> preco;
+    TableColumn<ProdutoEstoque, Double> precoTabela;
 
+    // Campos cesta de compras
+    @FXML
+    public TableView cesta;
+    @FXML
+    public TableColumn codigoCesta;
+    @FXML
+    public TableColumn nomeCesta;
+    @FXML
+    public TableColumn fabricanteCesta;
+    @FXML
+    public TableColumn categoriaCesta;
+    @FXML
+    public TableColumn formulaCesta;
+    @FXML
+    public TableColumn unidadesCesta;
+    @FXML
+    public TableColumn precoCesta;
+
+    // Inicializador de tabelas
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        codigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
-        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        fabricante.setCellValueFactory(new PropertyValueFactory<>("fabricante"));
-        categoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
-        formula.setCellValueFactory(new PropertyValueFactory<>("formula"));
-        preco.setCellValueFactory(new PropertyValueFactory<>("preco"));
-        quantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+        codigoTabela.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+        nomeTabela.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        fabricanteTabela.setCellValueFactory(new PropertyValueFactory<>("fabricante"));
+        categoriaTabela.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        formulaTabela.setCellValueFactory(new PropertyValueFactory<>("formula"));
+        precoTabela.setCellValueFactory(new PropertyValueFactory<>("preco"));
+        quantidadeTabela.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
 
-        tabela.setItems(FXCollections.observableArrayList(new EstoqueController().getEstoque()));
+        codigoCesta.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+        nomeCesta.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        fabricanteCesta.setCellValueFactory(new PropertyValueFactory<>("fabricante"));
+        categoriaCesta.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        formulaCesta.setCellValueFactory(new PropertyValueFactory<>("formula"));
+        precoCesta.setCellValueFactory(new PropertyValueFactory<>("preco"));
+        unidadesCesta.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+
+        tabelaEstoque.setItems(FXCollections.observableArrayList(new EstoqueController().getEstoque()));
+        cesta.setItems(FXCollections.observableArrayList(new Cesta().getCesta()));
     }
 
+    @SuppressWarnings("unused")
     public void adicionarProdutoCesta(MouseEvent mouseEvent) {
         System.out.println("Produto adicionado!");
         //
