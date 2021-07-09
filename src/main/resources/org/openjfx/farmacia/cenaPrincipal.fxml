@@ -36,15 +36,15 @@
       </MenuBar>
       <MenuButton fx:id="criterioFiltragemProdutos" layoutX="14.0" layoutY="58.0" mnemonicParsing="false" text="Procurar por..." AnchorPane.leftAnchor="14.0">
          <items>
-            <MenuItem mnemonicParsing="false" text="Nome do produto" />
-            <MenuItem mnemonicParsing="false" text="Codigo de referencia" />
-            <MenuItem mnemonicParsing="false" text="Fabricante" />
-            <MenuItem mnemonicParsing="false" text="Categoria" />
-            <MenuItem mnemonicParsing="false" text="Formula" />
+            <MenuItem fx:id="nomeProduto" mnemonicParsing="false" onAction="#setMenuItemTextNomeProduto" text="Nome do produto" />
+            <MenuItem fx:id="codigoReferencia" mnemonicParsing="false" onAction="#setMenuItemTextCodigoReferencia" text="Codigo de referencia" />
+            <MenuItem fx:id="fabricante" mnemonicParsing="false" onAction="#setMenuItemTextFabricante" text="Fabricante" />
+            <MenuItem fx:id="categoria" mnemonicParsing="false" onAction="#setMenuItemTextCategoria" text="Categoria" />
+            <MenuItem fx:id="formula" mnemonicParsing="false" onAction="#setMenuItemTextFormula" text="Formula" />
          </items>
       </MenuButton>
-      <TextField fx:id="caixaPesquisaProdutos" layoutX="156.0" layoutY="58.0" prefHeight="24.0" prefWidth="680.0" promptText="Caixa de pesquisa..." />
-      <TableView fx:id="tabelaEstoque" layoutX="14.0" layoutY="100.0" prefHeight="500.0" prefWidth="680.0" AnchorPane.leftAnchor="15.0">
+      <TextField fx:id="caixaPesquisaProdutos" layoutX="193.0" layoutY="58.0" prefHeight="24.0" prefWidth="502.0" promptText="Caixa de pesquisa..." />
+      <TableView fx:id="tabelaEstoque" layoutX="14.0" layoutY="100.0" prefHeight="496.0" prefWidth="680.0" AnchorPane.leftAnchor="15.0">
         <columns>
           <TableColumn fx:id="codigoTabela" prefWidth="75.0" text="Codigo" />
             <TableColumn fx:id="nomeTabela" minWidth="-Infinity" prefWidth="151.0" text="Nome" />
@@ -60,7 +60,7 @@
       </TableView>
       <Text layoutX="620.0" layoutY="671.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor total: R$" AnchorPane.bottomAnchor="45.0" />
       <Button fx:id="adicionarCesta" alignment="CENTER" layoutX="642.0" layoutY="615.0" mnemonicParsing="false" onMouseClicked="#adicionarProdutoCesta" text="Adicionar a cesta" textAlignment="CENTER" />
-      <TableView fx:id="tabelaClientes" layoutX="702.0" layoutY="100.0" prefHeight="252.0" prefWidth="653.0" AnchorPane.rightAnchor="15.0">
+      <TableView fx:id="tabelaClientes" layoutX="702.0" layoutY="100.0" prefHeight="246.0" prefWidth="653.0" AnchorPane.rightAnchor="15.0">
          <columns>
             <TableColumn fx:id="cpf" prefWidth="75.0" text="CPF" />
             <TableColumn fx:id="nome" minWidth="-Infinity" prefWidth="151.0" text="Nome" />
@@ -79,6 +79,6 @@
          </items>
       </MenuButton>
       <TextField fx:id="caixaPesquisaClientes" layoutX="1037.0" layoutY="58.0" prefHeight="24.0" prefWidth="314.0" promptText="Digite o CPF ou nome do cliente" />
-      <ListView layoutX="698.0" layoutY="350.0" prefHeight="252.0" prefWidth="653.0" />
+      <ListView fx:id="logs" layoutX="698.0" layoutY="350.0" prefHeight="246.0" prefWidth="653.0" />
    </children>
 </AnchorPane>
