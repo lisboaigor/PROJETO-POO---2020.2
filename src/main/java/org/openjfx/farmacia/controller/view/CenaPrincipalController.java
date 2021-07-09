@@ -60,11 +60,13 @@ public class CenaPrincipalController implements Initializable {
         tabelaEstoque.setItems(FXCollections.observableArrayList(new EstoqueController().getEstoque()));
         tabelaClientes.setItems(FXCollections.observableArrayList(new ClienteController().getClientes()));
 
-        rediensionarColunas(tabelaEstoque);
-        rediensionarColunas(tabelaClientes);
+        //redimensionarColunas(tabelaEstoque);
+        //redimensionarColunas(tabelaClientes);
+        
+        tabelaEstoque.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
-    private static void rediensionarColunas(TableView<?> tabela) {
+    private static void redimensionarColunas(TableView<?> tabela) {
         tabela.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
         tabela.getColumns().stream().forEach(coluna -> {
             Text t = new Text(coluna.getText());
