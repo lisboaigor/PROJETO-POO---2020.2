@@ -1,21 +1,43 @@
 package org.openjfx.farmacia.controller.view;
 
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import org.openjfx.farmacia.controller.Logs;
 import org.openjfx.farmacia.controller.cliente.ClienteController;
 import org.openjfx.farmacia.controller.produto.EstoqueController;
 import org.openjfx.farmacia.controller.produto.ProdutoEstoque;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class CenaPrincipalController implements Initializable {
+    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyy HH:mm:ss");
+
+    // Caixa de pesquisa
+    @FXML
+    public TextField caixaPesquisaProdutos;
+
+    // Menu button
+    @FXML
+    public MenuButton criterioFiltragemProdutos;
+    @FXML
+    public MenuItem nomeProduto;
+    @FXML
+    public MenuItem codigoReferencia;
+    @FXML
+    public MenuItem fabricante;
+    @FXML
+    public MenuItem categoria;
+    @FXML
+    public MenuItem formula;
 
     // Campos tabela de estoque
     @FXML
@@ -43,6 +65,10 @@ public class CenaPrincipalController implements Initializable {
     @FXML
     public TableColumn nome;
 
+    // logs do programa
+    @FXML
+    public ListView logs;
+
     // Inicializador de tabelas
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -59,9 +85,7 @@ public class CenaPrincipalController implements Initializable {
 
         tabelaEstoque.setItems(FXCollections.observableArrayList(new EstoqueController().getEstoque()));
         tabelaClientes.setItems(FXCollections.observableArrayList(new ClienteController().getClientes()));
-
-        //redimensionarColunas(tabelaEstoque);
-        //redimensionarColunas(tabelaClientes);
+        logs.setItems(FXCollections.observableList(new Logs().getLogs()));
         
         tabelaEstoque.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
@@ -85,8 +109,27 @@ public class CenaPrincipalController implements Initializable {
 
     @SuppressWarnings("unused")
     public void adicionarProdutoCesta(MouseEvent mouseEvent) {
-        System.out.println("Produto adicionado!");
-        //
+        logs.getItems().add(formatter.format(new Date()) + " | Produto adicionado ");
+        logs.scrollTo(logs.getItems().size());
     }
 
+    public void setMenuItemTextNomeProduto(ActionEvent actionEvent) {
+        criterioFiltragemProdutos.setText(nomeProduto.getText());
+    }
+
+    public void setMenuItemTextCodigoReferencia(ActionEvent actionEvent) {
+        criterioFiltragemProdutos.setText(codigoReferencia.getText());
+    }
+
+    public void setMenuItemTextFabricante(ActionEvent actionEvent) {
+        criterioFiltragemProdutos.setText(fabricante.getText());
+    }
+
+    public void setMenuItemTextCategoria(ActionEvent actionEvent) {
+        criterioFiltragemProdutos.setText(categoria.getText());
+    }
+
+    public void setMenuItemTextFormula(ActionEvent actionEvent) {
+        criterioFiltragemProdutos.setText(formula.getText());
+    }
 }
