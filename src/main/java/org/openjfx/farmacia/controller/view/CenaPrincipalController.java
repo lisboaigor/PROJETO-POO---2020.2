@@ -57,18 +57,6 @@ public class CenaPrincipalController implements Initializable {
     @FXML
     TableColumn<ProdutoEstoque, Double> precoTabela;
 
-    // Campos tabela de clientes
-    @FXML
-    public TableView tabelaClientes;
-    @FXML
-    public TableColumn cpf;
-    @FXML
-    public TableColumn nome;
-
-    // logs do programa
-    @FXML
-    public ListView logs;
-
     // Inicializador de tabelas
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -80,13 +68,7 @@ public class CenaPrincipalController implements Initializable {
         precoTabela.setCellValueFactory(new PropertyValueFactory<>("preco"));
         quantidadeTabela.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
 
-        cpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
-        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-
-        tabelaEstoque.setItems(FXCollections.observableArrayList(new EstoqueController().getEstoque()));
-        tabelaClientes.setItems(FXCollections.observableArrayList(new ClienteController().getClientes()));
-        logs.setItems(FXCollections.observableList(new Logs().getLogs()));
-        
+        tabelaEstoque.setItems(FXCollections.observableArrayList(new EstoqueController().getEstoque()));      
         tabelaEstoque.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
@@ -112,7 +94,7 @@ public class CenaPrincipalController implements Initializable {
         logs.getItems().add(formatter.format(new Date()) + " | Produto adicionado ");
         logs.scrollTo(logs.getItems().size());
     }
-
+    
     public void setMenuItemTextNomeProduto(ActionEvent actionEvent) {
         criterioFiltragemProdutos.setText(nomeProduto.getText());
     }
