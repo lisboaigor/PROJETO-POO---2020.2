@@ -3,6 +3,8 @@ package org.openjfx.farmacia.controller.produto;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import org.openjfx.farmacia.controller.produto.Controller;
+import org.openjfx.farmacia.controller.produto.ProdutoEstoque;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -80,7 +82,7 @@ public class EstoqueController implements Controller {
     @Override
     public List<ProdutoEstoque> filtrarCategoria(String categoria) {
         return estoque.stream()
-                .filter(produto -> produto.categoria.get().toUpperCase().equals(categoria))
+                .filter(produto -> produto.getCategoria().toUpperCase().equals(categoria))
                 .collect(Collectors.toList());
     }
 

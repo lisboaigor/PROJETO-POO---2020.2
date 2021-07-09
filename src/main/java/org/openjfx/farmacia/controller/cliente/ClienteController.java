@@ -2,6 +2,8 @@ package org.openjfx.farmacia.controller.cliente;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
+import org.openjfx.farmacia.controller.cliente.Cliente;
+import org.openjfx.farmacia.controller.cliente.Controller;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

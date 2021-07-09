@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.farmacia.controller.view.CenaPrincipalController">
    <children>
@@ -28,7 +29,7 @@
             </Menu>
          </menus>
       </MenuBar>
-      <MenuButton fx:id="criterioFiltragemProdutos" layoutX="14.0" layoutY="58.0" mnemonicParsing="false" text="Procurar por..." AnchorPane.leftAnchor="14.0">
+      <MenuButton fx:id="criterioFiltragemProdutos" layoutX="15.0" layoutY="46.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="190.0" text="Procurar por..." AnchorPane.leftAnchor="15.0">
          <items>
             <MenuItem fx:id="nomeProduto" mnemonicParsing="false" onAction="#setMenuItemTextNomeProduto" text="Nome do produto" />
             <MenuItem fx:id="codigoReferencia" mnemonicParsing="false" onAction="#setMenuItemTextCodigoReferencia" text="Codigo de referencia" />
@@ -37,8 +38,8 @@
             <MenuItem fx:id="formula" mnemonicParsing="false" onAction="#setMenuItemTextFormula" text="Formula" />
          </items>
       </MenuButton>
-      <TextField fx:id="caixaPesquisaProdutos" layoutX="134.0" layoutY="58.0" prefHeight="24.0" prefWidth="502.0" promptText="Caixa de pesquisa..." />
-      <TableView fx:id="tabelaEstoque" layoutX="14.0" layoutY="100.0" prefHeight="568.0" prefWidth="1347.0" AnchorPane.leftAnchor="15.0">
+      <TextField fx:id="caixaPesquisaProdutos" layoutX="214.0" layoutY="46.0" prefHeight="24.0" prefWidth="569.0" promptText="Caixa de pesquisa..." />
+      <TableView fx:id="tabelaEstoque" layoutX="16.0" layoutY="76.0" prefHeight="568.0" prefWidth="1347.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
         <columns>
           <TableColumn fx:id="codigoTabela" prefWidth="75.0" text="Codigo" />
             <TableColumn fx:id="nomeTabela" minWidth="-Infinity" prefWidth="151.0" text="Nome" />
@@ -52,7 +53,8 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="irParaCesta" alignment="CENTER" layoutX="560.0" layoutY="681.0" mnemonicParsing="false" onMouseClicked="#adicionarProdutoCesta" prefHeight="25.0" prefWidth="140.0" text="Adicionar à cesta" textAlignment="CENTER" />
-      <Button fx:id="adicionarCesta1" alignment="CENTER" layoutX="730.0" layoutY="681.0" mnemonicParsing="false" onMouseClicked="#adicionarProdutoCesta" prefHeight="25.0" prefWidth="140.0" text="Ir para a cesta" textAlignment="CENTER" />
+      <Button fx:id="adicionarCesta" alignment="CENTER" layoutX="530.0" layoutY="656.0" mnemonicParsing="false" onMouseClicked="#adicionarProdutoCesta" prefHeight="25.0" prefWidth="140.0" text="Adicionar à cesta" textAlignment="CENTER" />
+      <Button fx:id="abrirCesta" alignment="CENTER" layoutX="705.0" layoutY="656.0" mnemonicParsing="false" onMouseClicked="#irParaCesta" prefHeight="25.0" prefWidth="140.0" text="Ir para a cesta" textAlignment="CENTER" />
+      <Text fx:id="qtdProdutosCesta" layoutX="15.0" layoutY="674.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade de produtos na cesta: " />
    </children>
 </AnchorPane>

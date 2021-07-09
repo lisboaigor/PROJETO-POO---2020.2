@@ -4,23 +4,23 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import org.openjfx.farmacia.controller.Logs;
-import org.openjfx.farmacia.controller.cliente.ClienteController;
+import javafx.stage.Stage;
 import org.openjfx.farmacia.controller.produto.EstoqueController;
+import org.openjfx.farmacia.controller.produto.ProdutoCesta;
 import org.openjfx.farmacia.controller.produto.ProdutoEstoque;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class CenaPrincipalController implements Initializable {
-    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyy HH:mm:ss");
-
+    CestaComprasController cestaComprasController;
     // Caixa de pesquisa
     @FXML
     public TextField caixaPesquisaProdutos;
@@ -57,7 +57,15 @@ public class CenaPrincipalController implements Initializable {
     @FXML
     TableColumn<ProdutoEstoque, Double> precoTabela;
 
-    // Inicializador de tabelas
+    // Botoes e textos
+    @FXML
+    public Button abrirCesta;
+    @FXML
+    public Button adicionarCesta;
+    @FXML
+    public Text qtdProdutosCesta;
+
+    // Inicializador do programa
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         codigoTabela.setCellValueFactory(new PropertyValueFactory<>("codigo"));
@@ -68,50 +76,49 @@ public class CenaPrincipalController implements Initializable {
         precoTabela.setCellValueFactory(new PropertyValueFactory<>("preco"));
         quantidadeTabela.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
 
-        tabelaEstoque.setItems(FXCollections.observableArrayList(new EstoqueController().getEstoque()));      
-        tabelaEstoque.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-    }
 
-    private static void redimensionarColunas(TableView<?> tabela) {
-        tabela.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
-        tabela.getColumns().stream().forEach(coluna -> {
-            Text t = new Text(coluna.getText());
-            double max = t.getLayoutBounds().getWidth();
-            for (int i = 0; i < tabela.getItems().size(); i++)
-                if (coluna.getCellData(i) != null) {
-                    t = new Text(coluna.getCellData(i).toString());
-                    double largura = t.getLayoutBounds().getWidth();
-                    if (largura > max) {
-                        max = largura;
-                    }
-                }
-            coluna.setPrefWidth(max + 10.0d);
-        });
+        cestaComprasController = new CestaComprasController();
+
+        tabelaEstoque.setItems(FXCollections.observableArrayList(new EstoqueController().getEstoque()));
+        tabelaEstoque.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        qtdProdutosCesta.setText("Quantidade de produtos na cesta: " + cestaComprasController.getCestaCompras().size());
     }
 
     @SuppressWarnings("unused")
     public void adicionarProdutoCesta(MouseEvent mouseEvent) {
-        logs.getItems().add(formatter.format(new Date()) + " | Produto adicionado ");
-        logs.scrollTo(logs.getItems().size());
+        ProdutoEstoque produtosSelecionado = tabelaEstoque.getSelectionModel().getSelectedItem();
+        cestaComprasController.getCestaCompras().add(new ProdutoCesta(produtosSelecionado.codigoProperty(), produtosSelecionado.nomeProperty(),
+                                          produtosSelecionado.fabricanteProperty(), produtosSelecionado.categoriaProperty(),
+                                          produtosSelecionado.formulaProperty(), produtosSelecionado.precoProperty()));
+        qtdProdutosCesta.setText("Quantidade de produtos na cesta: " + cestaComprasController.getCestaCompras().size());
     }
-    
+
+    @SuppressWarnings("unused")
     public void setMenuItemTextNomeProduto(ActionEvent actionEvent) {
         criterioFiltragemProdutos.setText(nomeProduto.getText());
     }
 
+    @SuppressWarnings("unused")
     public void setMenuItemTextCodigoReferencia(ActionEvent actionEvent) {
         criterioFiltragemProdutos.setText(codigoReferencia.getText());
     }
 
+    @SuppressWarnings("unused")
     public void setMenuItemTextFabricante(ActionEvent actionEvent) {
         criterioFiltragemProdutos.setText(fabricante.getText());
     }
 
+    @SuppressWarnings("unused")
     public void setMenuItemTextCategoria(ActionEvent actionEvent) {
         criterioFiltragemProdutos.setText(categoria.getText());
     }
 
+    @SuppressWarnings("unused")
     public void setMenuItemTextFormula(ActionEvent actionEvent) {
         criterioFiltragemProdutos.setText(formula.getText());
+    }
+
+    public void irParaCesta(MouseEvent mouseEvent) {
+        cestaComprasController.abrirCesta();
     }
 }

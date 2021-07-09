@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.farmacia.controller.CestaCompras">
+   <children>
+      <TableView layoutX="8.0" layoutY="17.0" prefHeight="493.0" prefWidth="770.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Codigo" />
+          <TableColumn prefWidth="75.0" text="Nome" />
+            <TableColumn prefWidth="98.0" text="Fabricante" />
+            <TableColumn prefWidth="75.0" text="Categoria" />
+            <TableColumn prefWidth="75.0" text="Formula" />
+            <TableColumn prefWidth="75.0" text="Unidades" />
+            <TableColumn prefWidth="75.0" text="Preço" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</AnchorPane>
