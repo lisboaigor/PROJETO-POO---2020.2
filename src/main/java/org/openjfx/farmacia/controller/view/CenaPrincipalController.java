@@ -3,20 +3,26 @@ package org.openjfx.farmacia.controller.view;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import org.openjfx.farmacia.controller.produto.EstoqueController;
 import org.openjfx.farmacia.controller.produto.ProdutoCesta;
 import org.openjfx.farmacia.controller.produto.ProdutoEstoque;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CenaPrincipalController implements Initializable {
+	private static final String SEPARATOR = System.getProperty("file.separator");
+	static final String CESTA_FXML_PATH = SEPARATOR + "org" + SEPARATOR + "openjfx" + SEPARATOR + "farmacia" + SEPARATOR + "cestaCompras.fxml";
     CestaComprasController cestaComprasController;
     // Caixa de pesquisa
     @FXML
@@ -83,10 +89,10 @@ public class CenaPrincipalController implements Initializable {
 
     @SuppressWarnings("unused")
     public void adicionarProdutoCesta(MouseEvent mouseEvent) {
-        ProdutoEstoque produtosSelecionado = tabelaEstoque.getSelectionModel().getSelectedItem();
-        cestaComprasController.getCestaCompras().add(new ProdutoCesta(produtosSelecionado.codigoProperty(), produtosSelecionado.nomeProperty(),
-                                          produtosSelecionado.fabricanteProperty(), produtosSelecionado.categoriaProperty(),
-                                          produtosSelecionado.formulaProperty(), produtosSelecionado.precoProperty()));
+        ProdutoEstoque produtoSelecionado = tabelaEstoque.getSelectionModel().getSelectedItem();
+        cestaComprasController.getCestaCompras().add(new ProdutoCesta(produtoSelecionado.codigoProperty(), produtoSelecionado.nomeProperty(),
+                                          produtoSelecionado.fabricanteProperty(), produtoSelecionado.categoriaProperty(),
+                                          produtoSelecionado.formulaProperty(), produtoSelecionado.precoProperty()));
         qtdProdutosCesta.setText("Quantidade de produtos na cesta: " + cestaComprasController.getCestaCompras().size());
     }
 
@@ -116,7 +122,10 @@ public class CenaPrincipalController implements Initializable {
     }
 
     @SuppressWarnings("unused")
-    public void irParaCesta(MouseEvent mouseEvent) {
-        cestaComprasController.abrirCesta();
+    public void irParaCesta(MouseEvent mouseEvent) throws IOException {
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource(CESTA_FXML_PATH));
+    	Stage stage = new Stage();
+    	stage.setScene(new Scene(loader.load()));
+    	stage.show();
     }
 }
