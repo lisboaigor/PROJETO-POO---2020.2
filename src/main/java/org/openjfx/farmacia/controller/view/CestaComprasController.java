@@ -7,20 +7,20 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.openjfx.farmacia.controller.produto.ProdutoCesta;
 
-import java.net.URL;
 import java.util.ArrayList;
 
 public class CestaComprasController {
     ArrayList<ProdutoCesta> cestaCompras;
 
     public CestaComprasController() {
-        this.cestaCompras = cestaCompras = new ArrayList<>();;
+        this.cestaCompras = cestaCompras = new ArrayList<>();
     }
 
     public ArrayList<ProdutoCesta> getCestaCompras() {
         return cestaCompras;
     }
 
+    @SuppressWarnings("unused")
     public void setCestaCompras(ArrayList<ProdutoCesta> cestaCompras) {
         this.cestaCompras = cestaCompras;
     }

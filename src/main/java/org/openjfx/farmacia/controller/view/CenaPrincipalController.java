@@ -4,19 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
+
 import org.openjfx.farmacia.controller.produto.EstoqueController;
 import org.openjfx.farmacia.controller.produto.ProdutoCesta;
 import org.openjfx.farmacia.controller.produto.ProdutoEstoque;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class CenaPrincipalController implements Initializable {
@@ -118,6 +115,7 @@ public class CenaPrincipalController implements Initializable {
         criterioFiltragemProdutos.setText(formula.getText());
     }
 
+    @SuppressWarnings("unused")
     public void irParaCesta(MouseEvent mouseEvent) {
         cestaComprasController.abrirCesta();
     }
