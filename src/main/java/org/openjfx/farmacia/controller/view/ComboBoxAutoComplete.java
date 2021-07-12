@@ -25,9 +25,9 @@ import java.util.stream.Stream;
  */
 public class ComboBoxAutoComplete<T> {
 
-    private ComboBox<T> cmb;
+    private final ComboBox<T> cmb;
     String filter = "";
-    private ObservableList<T> originalItems;
+    private final ObservableList<T> originalItems;
 
     public ComboBoxAutoComplete(ComboBox<T> cmb) {
         this.cmb = cmb;
@@ -44,6 +44,9 @@ public class ComboBoxAutoComplete<T> {
         if (code.isLetterKey()) {
             filter += e.getText();
         }
+        if(code.isDigitKey()) {
+            filter += e.getText();
+        }
         if (code == KeyCode.BACK_SPACE && filter.length() > 0) {
             filter = filter.substring(0, filter.length() - 1);
             cmb.getItems().setAll(originalItems);
@@ -56,7 +59,7 @@ public class ComboBoxAutoComplete<T> {
             cmb.getTooltip().hide();
         } else {
             Stream<T> itens = cmb.getItems().stream();
-            String txtUsr = filter.toString().toLowerCase();
+            String txtUsr = filter.toLowerCase();
             itens.filter(el -> el.toString().toLowerCase().contains(txtUsr)).forEach(filteredList::add);
             cmb.getTooltip().setText(txtUsr);
             Window stage = cmb.getScene().getWindow();

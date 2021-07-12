@@ -20,6 +20,7 @@ import org.openjfx.farmacia.controller.produto.ProdutoEstoque;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class CenaPrincipalController implements Initializable {
     ObservableList<ProdutoCesta> cestaProdutos = FXCollections.observableArrayList(new ArrayList<>());
@@ -44,9 +45,6 @@ public class CenaPrincipalController implements Initializable {
     public TableColumn<ProdutoCesta, Integer> unidadesProdutoCesta;
     public TableColumn<ProdutoCesta, Double> precoProdutoCesta;
 
-    // Botoes e textos
-    public Button btnAdicionarProdutoCesta;
-    public Button btnRemoverProdutoCesta;
     public Text valorTotal;
 
     // ComboBox
@@ -118,7 +116,7 @@ public class CenaPrincipalController implements Initializable {
                 return null;
             }
         });
-        listaClientesComboBox.setItems(FXCollections.observableArrayList(new ClienteController().getClientes()));
+        listaClientesComboBox.setItems(FXCollections.observableArrayList(new ClienteController().getClientes().stream().filter(Cliente::isCadastrado).collect(Collectors.toList())));
         new ComboBoxAutoComplete<>(listaClientesComboBox);
     }
 
