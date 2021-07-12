@@ -3,9 +3,6 @@ package org.openjfx.farmacia.controller.produto;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import org.openjfx.farmacia.controller.produto.Controller;
-import org.openjfx.farmacia.controller.produto.ProdutoEstoque;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -15,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class EstoqueController implements Controller {
+public class Estoque implements Controller {
     private static final String SEPARATOR = System.getProperty("file.separator");
 
     private static final String ESTOQUE_PATH = "src" + SEPARATOR + "main" + SEPARATOR + "java" + SEPARATOR + "org" +
@@ -28,10 +25,9 @@ public class EstoqueController implements Controller {
 
     private final ArrayList<ProdutoEstoque> estoque;
 
-    public EstoqueController() {
+    public Estoque() {
         super();
         this.estoque = new ArrayList<>();
-
         try (BufferedReader buffer = new BufferedReader(new FileReader(ESTOQUE_PATH))) {
             buffer.lines().forEach(line -> estoque.add(strToProduto(line)));
         } catch (Exception e) {

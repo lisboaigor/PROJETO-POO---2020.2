@@ -15,26 +15,25 @@ public class ProdutoEstoque extends Produto {
 		this.fabricante = fabricante;
 		this.categoria = categoria;
 		this.formula = formula;
-		this.preco = preco;
+		this.precoUnitario = preco;
 		this.quantidade= quantidade;
 	}
 
-	@SuppressWarnings("unused")
 	public SimpleIntegerProperty quantidadeProperty() {
 		return quantidade;
 	}
 
-	@SuppressWarnings("unused")
 	public Integer getQuantidade() { return quantidade.get();}
 
-	@SuppressWarnings("unused")
 	public void setQuantidade(SimpleIntegerProperty quantidade) {
 		this.quantidade = quantidade;
 	}
 
+	public void setQuantidade(int quantidade) { this.quantidade.set(quantidade); }
+
 	@Override
 	public String toString() {
 		return this.codigo.get() + ";" + this.nome.get() + ";" + this.fabricante.get() + ";" + this.categoria.get() +
-				";" + this.formula.get() + ";" + this.preco.get() + ";" + this.quantidade.get();
+				";" + this.formula.get() + ";" + this.precoUnitario.get() + ";" + this.quantidade.get();
 	}
 }

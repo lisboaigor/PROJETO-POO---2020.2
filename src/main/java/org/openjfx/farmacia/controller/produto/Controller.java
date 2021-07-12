@@ -1,6 +1,5 @@
 package org.openjfx.farmacia.controller.produto;
 
-import java.io.IOException;
 import java.util.List;
 
 public interface Controller {

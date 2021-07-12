@@ -9,95 +9,41 @@ public abstract class Produto {
     protected SimpleStringProperty fabricante;
     protected SimpleStringProperty categoria;
     protected SimpleStringProperty formula;
-    protected SimpleDoubleProperty preco;
+    protected SimpleDoubleProperty precoUnitario;
 
-    @SuppressWarnings("unused")
-    public String getCodigo() {
-        return codigo.get();
-    }
+    public String getCodigo() { return codigo.get(); }
 
-    @SuppressWarnings("unused")
-    public SimpleStringProperty codigoProperty() {
-        return codigo;
-    }
+    public SimpleStringProperty codigoProperty() { return codigo; }
 
-    @SuppressWarnings("unused")
-    public void setCodigo(String codigo) {
-        this.codigo.set(codigo);
-    }
+    public void setCodigo(String codigo) { this.codigo.set(codigo); }
 
-    @SuppressWarnings("unused")
-    public String getNome() {
-        return nome.get();
-    }
+    public String getNome() { return nome.get(); }
 
-    @SuppressWarnings("unused")
-    public SimpleStringProperty nomeProperty() {
-        return nome;
-    }
+    public SimpleStringProperty nomeProperty() { return nome; }
 
-    @SuppressWarnings("unused")
-    public void setNome(String nome) {
-        this.nome.set(nome);
-    }
+    public void setNome(String nome) { this.nome.set(nome); }
 
-    @SuppressWarnings("unused")
-    public String getFabricante() {
-        return fabricante.get();
-    }
+    public String getFabricante() { return fabricante.get(); }
 
-    @SuppressWarnings("unused")
-    public SimpleStringProperty fabricanteProperty() {
-        return fabricante;
-    }
+    public SimpleStringProperty fabricanteProperty() { return fabricante; }
 
-    @SuppressWarnings("unused")
-    public void setFabricante(String fabricante) {
-        this.fabricante.set(fabricante);
-    }
+    public void setFabricante(String fabricante) { this.fabricante.set(fabricante); }
 
-    @SuppressWarnings("unused")
-    public String getCategoria() {
-        return categoria.get();
-    }
+    public String getCategoria() { return categoria.get(); }
 
-    @SuppressWarnings("unused")
-    public SimpleStringProperty categoriaProperty() {
-        return categoria;
-    }
+    public SimpleStringProperty categoriaProperty() { return categoria; }
 
-    @SuppressWarnings("unused")
-    public void setCategoria(String categoria) {
-        this.categoria.set(categoria);
-    }
+    public void setCategoria(String categoria) { this.categoria.set(categoria); }
 
-    @SuppressWarnings("unused")
-    public String getFormula() {
-        return formula.get();
-    }
+    public String getFormula() { return formula.get(); }
 
-    @SuppressWarnings("unused")
-    public SimpleStringProperty formulaProperty() {
-        return formula;
-    }
+    public SimpleStringProperty formulaProperty() { return formula; }
 
-    @SuppressWarnings("unused")
-    public void setFormula(String formula) {
-        this.formula.set(formula);
-    }
+    public void setFormula(String formula) { this.formula.set(formula); }
 
-    @SuppressWarnings("unused")
-    public double getPreco() {
-        return preco.get();
-    }
+    public double getPrecoUnitario() { return precoUnitario.get(); }
 
-    @SuppressWarnings("unused")
-    public SimpleDoubleProperty precoProperty() {
-        return preco;
-    }
+    public SimpleDoubleProperty precoUnitarioProperty() { return precoUnitario; }
 
-    @SuppressWarnings("unused")
-    public void setPreco(double preco) {
-        this.preco.set(preco);
-    }
+    public void setPrecoUnitario(double precoUnitario) { this.precoUnitario.set(precoUnitario); }
 }
