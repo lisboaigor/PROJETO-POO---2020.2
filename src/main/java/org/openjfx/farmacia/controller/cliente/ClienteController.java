@@ -57,7 +57,4 @@ public class ClienteController implements Controller {
         return clientes;
     }
 
-    public void setClientes(ArrayList<Cliente> clientes) {
-        this.clientes = clientes;
-    }
 }
