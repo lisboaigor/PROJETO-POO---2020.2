@@ -16,7 +16,7 @@ public class App extends Application {
     	scene = new Scene(loadFXML("cenaPrincipal"), 1366, 720);
         stage.setScene(scene);
         stage.setResizable(false);
-        stage.setMaximized(true);
+        //stage.setMaximized(true);
         stage.show();
     }
 
