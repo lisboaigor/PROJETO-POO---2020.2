@@ -3,27 +3,32 @@ package org.openjfx.farmacia.controller.view;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
+import org.openjfx.farmacia.App;
 import org.openjfx.farmacia.controller.cliente.Cliente;
 import org.openjfx.farmacia.controller.cliente.ClienteController;
 import org.openjfx.farmacia.controller.produto.Estoque;
 import org.openjfx.farmacia.controller.produto.ProdutoCesta;
 import org.openjfx.farmacia.controller.produto.ProdutoEstoque;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class CenaPrincipalController implements Initializable {
-    ObservableList<ProdutoCesta> cestaProdutos = FXCollections.observableArrayList(new ArrayList<>());
+    ObservableList<Cliente> clientes = FXCollections.observableArrayList(new ClienteController().getClientes());
+    ObservableList<ProdutoEstoque> estoque = FXCollections.observableArrayList(new Estoque().getEstoque());
 
     // Caixa de pesquisa
     public TextField caixaPesquisaProdutos;
@@ -68,28 +73,20 @@ public class CenaPrincipalController implements Initializable {
         precoTabela.setCellValueFactory(new PropertyValueFactory<>("precoUnitario"));
         quantidadeTabela.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
 
-        ObservableList<ProdutoEstoque> estoque = FXCollections.observableArrayList(new Estoque().getEstoque());
-
-        FilteredList<ProdutoEstoque> listaFiltrada = new FilteredList<>(estoque);
+        FilteredList<ProdutoEstoque> listaFiltrada = estoque.filtered(produto -> produto.getQuantidade() > 0);
         caixaPesquisaProdutos.textProperty().addListener(((observable, oldValue, newValue) -> listaFiltrada.setPredicate(produto -> {
             if (newValue == null || newValue.isEmpty())
                 return true;
             String lowerCaseFilter = newValue.toLowerCase();
 
-            if (produto.getCodigo().toLowerCase().contains(lowerCaseFilter))
-                return true;
-            else if (produto.getNome().toLowerCase().contains(lowerCaseFilter))
-                return true;
-            else if (produto.getFabricante().toLowerCase().contains(lowerCaseFilter))
-                return true;
-            else if (produto.getCategoria().toLowerCase().contains(lowerCaseFilter))
+            if (produto.getCodigo().toLowerCase().contains(lowerCaseFilter) ||
+                    produto.getNome().toLowerCase().contains(lowerCaseFilter) ||
+                    produto.getFabricante().toLowerCase().contains(lowerCaseFilter) ||
+                    produto.getCategoria().toLowerCase().contains(lowerCaseFilter))
                 return true;
             else return produto.getFormula().toLowerCase().contains(lowerCaseFilter);
         })));
-
-        SortedList<ProdutoEstoque> estoqueOrdenado = new SortedList<>(listaFiltrada);
-        estoqueOrdenado.comparatorProperty().bind(tabelaEstoque.comparatorProperty());
-        tabelaEstoque.setItems(estoqueOrdenado);
+        tabelaEstoque.setItems(listaFiltrada);
     }
 
     private void inicializarCesta() {
@@ -99,7 +96,7 @@ public class CenaPrincipalController implements Initializable {
         unidadesProdutoCesta.setCellValueFactory(new PropertyValueFactory<>("unidades"));
         precoProdutoCesta.setCellValueFactory(new PropertyValueFactory<>("preco"));
 
-        tabelaCompras.setItems(cestaProdutos);
+        tabelaCompras.setItems(FXCollections.observableArrayList(new ArrayList<>()));
         unidadesProdutoCesta.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         atualizarValorTotal();
     }
@@ -116,7 +113,9 @@ public class CenaPrincipalController implements Initializable {
                 return null;
             }
         });
-        listaClientesComboBox.setItems(FXCollections.observableArrayList(new ClienteController().getClientes().stream().filter(Cliente::isCadastrado).collect(Collectors.toList())));
+        listaClientesComboBox.setItems(FXCollections.observableArrayList(clientes.stream()
+                                                                                 .filter(Cliente::isAtivado)
+                                                                                 .collect(Collectors.toList())));
         new ComboBoxAutoComplete<>(listaClientesComboBox);
     }
 
@@ -134,7 +133,7 @@ public class CenaPrincipalController implements Initializable {
 
     public void removerProdutoCesta() {
         ProdutoCesta produtoSelecionado = tabelaCompras.getSelectionModel().getSelectedItem();
-        cestaProdutos.remove(produtoSelecionado);
+        tabelaCompras.getItems().remove(produtoSelecionado);
         atualizarValorTotal();
     }
 
@@ -143,6 +142,19 @@ public class CenaPrincipalController implements Initializable {
         produto.setUnidades(produtoCestaIntegerCellEditEvent.getNewValue());
         produto.setPreco(produto.getUnidades() * produto.getPrecoUnitario());
         atualizarValorTotal();
+    }
+
+    public void abrirCenaAdmClientes() throws IOException {
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("cenaAdmClientes.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(loader.load()));
+        stage.setTitle("Adiministração de Clientes");
+        stage.setResizable(false);
+
+        CenaAdmClientesController controller = loader.getController();
+        controller.setClientes(clientes);
+
+        stage.show();
     }
 
 }

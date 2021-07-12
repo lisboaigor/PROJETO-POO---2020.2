@@ -4,15 +4,14 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public final class Cliente {
-
-    protected SimpleStringProperty nome;
     protected SimpleStringProperty cpf;
-    protected SimpleBooleanProperty cadastrado;
+    protected SimpleStringProperty nome;
+    protected SimpleBooleanProperty ativado;
 
-    public Cliente(SimpleStringProperty cpf, SimpleStringProperty nome, SimpleBooleanProperty cadastrado) {
+    public Cliente(SimpleStringProperty cpf, SimpleStringProperty nome, SimpleBooleanProperty ativado) {
         this.cpf = cpf;
         this.nome = nome;
-        this.cadastrado= cadastrado;
+        this.ativado = ativado;
     }
 
     public String getNome() {
@@ -39,21 +38,21 @@ public final class Cliente {
         this.cpf.set(cpf);
     }
 
-    public boolean isCadastrado() {
-        return cadastrado.get();
+    public boolean isAtivado() {
+        return ativado.get();
     }
 
-    public SimpleBooleanProperty cadastradoProperty() {
-        return cadastrado;
+    public SimpleBooleanProperty ativadoProperty() {
+        return ativado;
     }
 
-    public void setCadastrado(boolean cadastrado) {
-        this.cadastrado.set(cadastrado);
+    public void setAtivado(boolean ativado) {
+        this.ativado.set(ativado);
     }
 
     @Override
     public String toString() {
-        return nome + ";" + cpf + ";" + cadastrado;
+        return nome + ";" + cpf + ";" + ativado;
     }
 
 
