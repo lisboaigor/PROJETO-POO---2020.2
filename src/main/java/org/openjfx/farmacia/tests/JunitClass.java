@@ -1,4 +1,4 @@
-package org.openjfx.farmacia.controller.tests;
+package org.openjfx.farmacia.tests;
 
 import org.junit.Test;
 
