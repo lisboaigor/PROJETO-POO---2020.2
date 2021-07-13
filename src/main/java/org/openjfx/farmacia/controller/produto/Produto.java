@@ -12,38 +12,26 @@ public abstract class Produto {
     protected SimpleDoubleProperty precoUnitario;
 
     public String getCodigo() { return codigo.get(); }
-
     public SimpleStringProperty codigoProperty() { return codigo; }
-
     public void setCodigo(String codigo) { this.codigo.set(codigo); }
 
     public String getNome() { return nome.get(); }
-
     public SimpleStringProperty nomeProperty() { return nome; }
-
     public void setNome(String nome) { this.nome.set(nome); }
 
     public String getFabricante() { return fabricante.get(); }
-
     public SimpleStringProperty fabricanteProperty() { return fabricante; }
-
     public void setFabricante(String fabricante) { this.fabricante.set(fabricante); }
 
     public String getCategoria() { return categoria.get(); }
-
     public SimpleStringProperty categoriaProperty() { return categoria; }
-
     public void setCategoria(String categoria) { this.categoria.set(categoria); }
-
+    
     public String getFormula() { return formula.get(); }
-
     public SimpleStringProperty formulaProperty() { return formula; }
-
     public void setFormula(String formula) { this.formula.set(formula); }
-
+    
     public double getPrecoUnitario() { return precoUnitario.get(); }
-
     public SimpleDoubleProperty precoUnitarioProperty() { return precoUnitario; }
-
     public void setPrecoUnitario(double precoUnitario) { this.precoUnitario.set(precoUnitario); }
 }
