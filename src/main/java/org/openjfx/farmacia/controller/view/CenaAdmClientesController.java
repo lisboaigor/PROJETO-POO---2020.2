@@ -55,8 +55,7 @@ public class CenaAdmClientesController implements Initializable {
     }
 
     public void desativarCliente() {
-        Cliente clienteSelecionado = tabelaClientes.getSelectionModel().getSelectedItem();
-        clienteSelecionado.setAtivado(false);
+        tabelaClientes.getSelectionModel().getSelectedItem().setAtivado(false);
     }
 
     public void abrirCenaNovoCliente() throws IOException {

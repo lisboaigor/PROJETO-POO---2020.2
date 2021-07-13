@@ -6,7 +6,10 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.text.Text;
@@ -58,12 +61,6 @@ public class CenaPrincipalController implements Initializable {
     // Inicializador do programa
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        inicializarTabelaEstoque();
-        inicializarCesta();
-        inicializarClientes();
-    }
-
-    private void inicializarTabelaEstoque() {
         // Campos tabela de estoque
         codigoTabela.setCellValueFactory(new PropertyValueFactory<>("codigo"));
         nomeTabela.setCellValueFactory(new PropertyValueFactory<>("nome"));
@@ -73,6 +70,18 @@ public class CenaPrincipalController implements Initializable {
         precoTabela.setCellValueFactory(new PropertyValueFactory<>("precoUnitario"));
         quantidadeTabela.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
 
+        // Campos ProdutoCesta
+        codigoProdutoCesta.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+        nomeProdutoCesta.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        unidadesProdutoCesta.setCellValueFactory(new PropertyValueFactory<>("unidades"));
+        precoProdutoCesta.setCellValueFactory(new PropertyValueFactory<>("preco"));
+
+        inicializarTabelaEstoque();
+        inicializarCesta();
+        inicializarClientes();
+    }
+
+    private void inicializarTabelaEstoque() {
         FilteredList<ProdutoEstoque> listaFiltrada = estoque.filtered(produto -> produto.getQuantidade() > 0);
         caixaPesquisaProdutos.textProperty().addListener(((observable, oldValue, newValue) -> listaFiltrada.setPredicate(produto -> {
             if (newValue == null || newValue.isEmpty())
@@ -90,12 +99,6 @@ public class CenaPrincipalController implements Initializable {
     }
 
     private void inicializarCesta() {
-        // Campos ProdutoCesta
-        codigoProdutoCesta.setCellValueFactory(new PropertyValueFactory<>("codigo"));
-        nomeProdutoCesta.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        unidadesProdutoCesta.setCellValueFactory(new PropertyValueFactory<>("unidades"));
-        precoProdutoCesta.setCellValueFactory(new PropertyValueFactory<>("preco"));
-
         tabelaCompras.setItems(FXCollections.observableArrayList(new ArrayList<>()));
         unidadesProdutoCesta.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         atualizarValorTotal();
@@ -122,8 +125,8 @@ public class CenaPrincipalController implements Initializable {
     public void adicionarProdutoCesta() {
         ProdutoEstoque produtoSelecionado = tabelaEstoque.getSelectionModel().getSelectedItem();
         tabelaCompras.getItems().add(new ProdutoCesta(produtoSelecionado.codigoProperty(), produtoSelecionado.nomeProperty(),
-                produtoSelecionado.fabricanteProperty(), produtoSelecionado.categoriaProperty(),
-                produtoSelecionado.formulaProperty(), produtoSelecionado.precoUnitarioProperty()));
+                                                      produtoSelecionado.fabricanteProperty(), produtoSelecionado.categoriaProperty(),
+                                                      produtoSelecionado.formulaProperty(), produtoSelecionado.precoUnitarioProperty()));
         atualizarValorTotal();
     }
 
@@ -132,8 +135,7 @@ public class CenaPrincipalController implements Initializable {
     }
 
     public void removerProdutoCesta() {
-        ProdutoCesta produtoSelecionado = tabelaCompras.getSelectionModel().getSelectedItem();
-        tabelaCompras.getItems().remove(produtoSelecionado);
+        tabelaCompras.getItems().remove(tabelaCompras.getSelectionModel().getSelectedItem());
         atualizarValorTotal();
     }
 
@@ -151,10 +153,18 @@ public class CenaPrincipalController implements Initializable {
         stage.setTitle("Adiministração de Clientes");
         stage.setResizable(false);
 
-        CenaAdmClientesController controller = loader.getController();
-        controller.setClientes(clientes);
-
+        ((CenaAdmClientesController) loader.getController()).setClientes(clientes);
         stage.show();
     }
 
+    public void abrirCenaAdmProdutos() throws IOException {
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("cenaAdmProdutos.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(loader.load()));
+        stage.setTitle("Administraçãp Produtos");
+        stage.setResizable(false);
+
+        ((CenaAdmProdutosController) loader.getController()).setEstoque(estoque);
+        stage.show();
+    }
 }
