@@ -1,5 +1,8 @@
 package org.openjfx.farmacia.controller.view;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXMLLoader;
@@ -16,10 +19,6 @@ import javafx.util.converter.IntegerStringConverter;
 import org.openjfx.farmacia.App;
 import org.openjfx.farmacia.controller.produto.ProdutoCesta;
 import org.openjfx.farmacia.controller.produto.ProdutoEstoque;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class CenaAdmProdutosController implements Initializable {
     public TableView<ProdutoEstoque> tabelaEstoque;
