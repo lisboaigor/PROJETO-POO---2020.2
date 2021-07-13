@@ -63,7 +63,9 @@ public class CenaAdmClientesController implements Initializable {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("cenaNovoCliente.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(loader.load()));
-        ((CenaNovoClienteController) loader.getController()).setClientes(tabelaClientes.getItems());
+
+        ((CenaNovoClienteController) loader.getController()).setClientes((FilteredList<Cliente>) tabelaClientes.getItems());
+
         stage.setTitle("Cadastro de Cliente");
         stage.setResizable(false);
         stage.show();
