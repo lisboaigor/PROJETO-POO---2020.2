@@ -9,14 +9,16 @@ public class Venda {
     protected SimpleStringProperty nomeProduto;
     protected SimpleStringProperty unidades;
     protected SimpleStringProperty preco;
+    protected SimpleStringProperty dataVenda;
 
-    public Venda(SimpleStringProperty cpf, SimpleStringProperty nomeCliente, SimpleStringProperty codigo, SimpleStringProperty nomeProduto, SimpleStringProperty unidades, SimpleStringProperty preco) {
+    public Venda(SimpleStringProperty cpf, SimpleStringProperty nomeCliente, SimpleStringProperty codigo, SimpleStringProperty nomeProduto, SimpleStringProperty unidades, SimpleStringProperty preco, SimpleStringProperty dataVenda) {
         this.cpf = cpf;
         this.nomeCliente = nomeCliente;
         this.codigo = codigo;
         this.nomeProduto = nomeProduto;
         this.unidades = unidades;
         this.preco = preco;
+        this.dataVenda = dataVenda;
     }
 
     public String getCpf() {
@@ -91,8 +93,16 @@ public class Venda {
         this.preco.set(preco);
     }
 
+    public String getDataVenda() {
+        return dataVenda.get();
+    }
+
+    public SimpleStringProperty dataVendaProperty() {
+        return dataVenda;
+    }
+
     @Override
     public String toString() {
-        return cpf + ";" + nomeCliente + ";" + codigo + ";" + nomeProduto + ";" + unidades + ";" + preco;
+        return cpf + ";" + nomeCliente + ";" + codigo + ";" + nomeProduto + ";" + unidades + ";" + preco + dataVenda;
     }
 }

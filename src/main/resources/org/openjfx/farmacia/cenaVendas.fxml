@@ -11,10 +11,11 @@
       <columns>
           <TableColumn fx:id="cpf" prefWidth="75.0" text="CPF" />
           <TableColumn fx:id="nomeCliente" prefWidth="75.0" text="NOME CLIENTE" />
-          <TableColumn fx:id="codigo" prefWidth="75.0" text="CODIGO PRODUTO" />
+          <TableColumn fx:id="codigo" prefWidth="75.0" text="COD. PRODUTO" />
           <TableColumn fx:id="nomeProduto" prefWidth="75.0" text="NOME PRODUTO" />
-          <TableColumn fx:id="unidades" prefWidth="75.0" text="UNIDADES COMPRADAS" />
+          <TableColumn fx:id="unidades" prefWidth="75.0" text="UNIDADES" />
           <TableColumn fx:id="preco" prefWidth="75.0" text="PREÇO" />
+         <TableColumn fx:id="data" prefWidth="75.0" text="DATA" />
       </columns>
         <columnResizePolicy>
           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

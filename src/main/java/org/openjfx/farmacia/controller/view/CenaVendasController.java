@@ -23,6 +23,7 @@ public class CenaVendasController implements Initializable {
     public TableColumn<Venda, String> nomeProduto;
     public TableColumn<Venda, String> unidades;
     public TableColumn<Venda, String> preco;
+    public TableColumn<Venda, String> data;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -32,6 +33,7 @@ public class CenaVendasController implements Initializable {
         nomeProduto.setCellValueFactory(new PropertyValueFactory<>("nomeProduto"));
         unidades.setCellValueFactory(new PropertyValueFactory<>("unidades"));
         preco.setCellValueFactory(new PropertyValueFactory<>("preco"));
+        data.setCellValueFactory(new PropertyValueFactory<>("data"));
     }
 
     public void setVendas(ObservableList<Venda> vendas) {
@@ -46,9 +48,10 @@ public class CenaVendasController implements Initializable {
                 venda.getNomeCliente().toLowerCase().contains(lowerCaseFilter) ||
                 venda.getCodigo().toLowerCase().contains(lowerCaseFilter) ||
                 venda.getNomeProduto().toLowerCase().contains(lowerCaseFilter) ||
-                venda.getUnidades().toLowerCase().contains(lowerCaseFilter))
+                venda.getUnidades().toLowerCase().contains(lowerCaseFilter) ||
+                venda.getPreco().toLowerCase().contains(lowerCaseFilter))
                 return true;
-            else return venda.getPreco().toLowerCase().contains(lowerCaseFilter);
+            else return venda.getDataVenda().contains(lowerCaseFilter);
         })));
         tabelaVendas.setItems(listaFiltrada);
     }

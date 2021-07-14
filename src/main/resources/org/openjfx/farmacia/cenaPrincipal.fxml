@@ -36,7 +36,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
         </columnResizePolicy>
     </TableView>
-    <Text layoutX="1020.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cesta de Compras" />
+    <Text layoutX="995.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cesta de Compras" />
     <TableView fx:id="tabelaCompras" editable="true" layoutX="755.0" layoutY="94.0" prefHeight="265.0" prefWidth="593.0" AnchorPane.rightAnchor="15.0">
         <columns>
             <TableColumn fx:id="codigoProdutoCesta" prefWidth="75.0" text="Codigo" />
@@ -48,7 +48,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
         </columnResizePolicy>
     </TableView>
-    <Text layoutX="1003.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecione um cliente" />
+    <Text layoutX="987.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecione um cliente" />
     <Button alignment="CENTER" layoutX="14.0" layoutY="660.0" mnemonicParsing="false" onMouseClicked="#adicionarProdutoCesta" prefHeight="25.0" prefWidth="140.0" text="Adicionar à cesta" textAlignment="CENTER" />
     <Button layoutX="990.0" layoutY="661.0" mnemonicParsing="false" text="Finalizar Compra" />
     <ComboBox fx:id="listaClientesComboBox" layoutX="758.0" layoutY="443.0" prefHeight="24.0" prefWidth="593.0" promptText="Selecione um cliente ou digite seu Nome/CPF" />
