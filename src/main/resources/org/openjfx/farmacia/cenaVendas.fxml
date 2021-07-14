@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.farmacia.controller.view.CenaVendasController">
+    <TextField fx:id="caixaPesquisaVendas" layoutX="14.0" layoutY="22.0" promptText="Digite o nome ou cpf de um cliente, ou data de venda." AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
+    <TableView fx:id="tabelaVendas" layoutX="300.0" layoutY="200.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="54.0">
+      <columns>
+          <TableColumn fx:id="cpf" prefWidth="75.0" text="CPF" />
+          <TableColumn fx:id="nomeCliente" prefWidth="75.0" text="NOME CLIENTE" />
+          <TableColumn fx:id="codigo" prefWidth="75.0" text="CODIGO PRODUTO" />
+          <TableColumn fx:id="nomeProduto" prefWidth="75.0" text="NOME PRODUTO" />
+          <TableColumn fx:id="unidades" prefWidth="75.0" text="UNIDADES COMPRADAS" />
+          <TableColumn fx:id="preco" prefWidth="75.0" text="PREÇO" />
+      </columns>
+        <columnResizePolicy>
+          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy>
+    </TableView>
+</AnchorPane>

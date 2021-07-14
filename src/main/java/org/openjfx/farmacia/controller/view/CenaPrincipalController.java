@@ -19,9 +19,7 @@ import javafx.util.converter.IntegerStringConverter;
 import org.openjfx.farmacia.App;
 import org.openjfx.farmacia.controller.cliente.Cliente;
 import org.openjfx.farmacia.controller.cliente.ClienteController;
-import org.openjfx.farmacia.controller.produto.Estoque;
-import org.openjfx.farmacia.controller.produto.ProdutoCesta;
-import org.openjfx.farmacia.controller.produto.ProdutoEstoque;
+import org.openjfx.farmacia.controller.produto.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,6 +30,7 @@ import java.util.stream.Collectors;
 public class CenaPrincipalController implements Initializable {
     ObservableList<Cliente> clientes = FXCollections.observableArrayList(new ClienteController().getClientes());
     ObservableList<ProdutoEstoque> estoque = FXCollections.observableArrayList(new Estoque().getEstoque());
+    ObservableList<Venda> vendas = FXCollections.observableArrayList(new Vendas().getVendas());
 
     // Caixa de pesquisa
     public TextField caixaPesquisaProdutos;
@@ -124,9 +123,9 @@ public class CenaPrincipalController implements Initializable {
 
     public void adicionarProdutoCesta() {
         ProdutoEstoque produtoSelecionado = tabelaEstoque.getSelectionModel().getSelectedItem();
-        tabelaCompras.getItems().add(new ProdutoCesta(produtoSelecionado.codigoProperty(), produtoSelecionado.nomeProperty(),
-                                                      produtoSelecionado.fabricanteProperty(), produtoSelecionado.categoriaProperty(),
-                                                      produtoSelecionado.formulaProperty(), produtoSelecionado.precoUnitarioProperty()));
+        tabelaCompras.getItems().add(new ProdutoCesta(produtoSelecionado.codigoProperty(),
+                                                      produtoSelecionado.nomeProperty(),
+                                                      produtoSelecionado.precoUnitarioProperty()));
         atualizarValorTotal();
     }
 
@@ -161,10 +160,20 @@ public class CenaPrincipalController implements Initializable {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("cenaAdmProdutos.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(loader.load()));
-        stage.setTitle("Administraçãp Produtos");
+        stage.setTitle("Administração Produtos");
         stage.setResizable(false);
 
         ((CenaAdmProdutosController) loader.getController()).setEstoque(estoque);
         stage.show();
     }
+
+    public void abrirCenaVendas() throws IOException {
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("cenaVendas.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(loader.load()));
+        ((CenaVendasController) loader.getController()).setVendas(vendas);
+        stage.setTitle("Consulta de Vendas");
+        stage.show();
+    }
+
 }

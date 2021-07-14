@@ -14,8 +14,7 @@
 <AnchorPane prefHeight="720.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.farmacia.controller.view.CenaPrincipalController">
     <MenuBar layoutY="1.0" onMouseClicked="#adicionarProdutoCesta" prefHeight="27.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Menu mnemonicParsing="false" text="Consulta">
-            <MenuItem mnemonicParsing="false" text="Movimentações do Programa" />
-            <MenuItem mnemonicParsing="false" text="Vendas" />
+            <MenuItem mnemonicParsing="false" onAction="#abrirCenaVendas" text="Vendas" />
         </Menu>
         <Menu mnemonicParsing="false" text="Adminstração">
             <MenuItem mnemonicParsing="false" onAction="#abrirCenaAdmProdutos" text="Cadastrar/Remover Produto" />
