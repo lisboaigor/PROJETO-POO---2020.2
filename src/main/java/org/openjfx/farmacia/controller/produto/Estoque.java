@@ -22,7 +22,6 @@ public class Estoque {
     private final ArrayList<ProdutoEstoque> estoque;
 
     public Estoque() {
-        super();
         this.estoque = new ArrayList<>();
         try (BufferedReader buffer = new BufferedReader(new FileReader(ESTOQUE_PATH))) {
             buffer.lines().forEach(line -> estoque.add(strToProduto(line)));

@@ -52,8 +52,7 @@ public final class Cliente {
 
     @Override
     public String toString() {
-        return nome + ";" + cpf + ";" + ativado;
+        return nome.get() + ";" + cpf.get() + ";" + ativado.get();
     }
-
 
 }

@@ -16,19 +16,8 @@ public class ProdutoCesta extends Produto {
         this.unidades = new SimpleIntegerProperty(1);
     }
 
-    public ProdutoCesta(SimpleStringProperty codigo, SimpleStringProperty nome, SimpleIntegerProperty unidades, SimpleDoubleProperty preco) {
-        this.codigo = codigo;
-        this.nome = nome;
-        this.unidades = unidades;
-        this.preco = preco;
-    }
-
     public int getUnidades() {
         return unidades.get();
-    }
-
-    public SimpleIntegerProperty unidadesProperty() {
-        return unidades;
     }
 
     public void setUnidades(int unidades) {
@@ -37,12 +26,10 @@ public class ProdutoCesta extends Produto {
 
     public double getPreco() { return preco.get(); }
 
-    public SimpleDoubleProperty precoProperty() { return preco; }
-
     public void setPreco(double preco) { this.preco.set(preco); }
 
     @Override
     public String toString() {
-        return codigo + ";" + nome + ";" + fabricante + ";" + categoria + ";" + formula + ";" + unidades + ";" + preco;
+        return codigo.get() + ";" + nome.get() + ";" + unidades.get() + ";" + preco.get();
     }
 }

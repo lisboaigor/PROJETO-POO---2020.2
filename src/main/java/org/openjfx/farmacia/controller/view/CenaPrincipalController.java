@@ -30,11 +30,11 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class CenaPrincipalController implements Initializable {
-    ObservableList<Cliente> clientes = FXCollections.observableArrayList(new ClienteController().getClientes());
-    ObservableList<ProdutoEstoque> estoque = FXCollections.observableArrayList(new Estoque().getEstoque());
-    ObservableList<Venda> vendas = FXCollections.observableArrayList(new Vendas().getVendas());
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+public final class CenaPrincipalController implements Initializable {
+    private final ObservableList<Cliente> clientes = FXCollections.observableArrayList(new ClienteController().getClientes());
+    private final ObservableList<ProdutoEstoque> estoque = FXCollections.observableArrayList(new Estoque().getEstoque());
+    private final ObservableList<Venda> vendas = FXCollections.observableArrayList(new Vendas().getVendas());
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     // Caixa de pesquisa
     public TextField caixaPesquisaProdutos;
@@ -92,9 +92,9 @@ public class CenaPrincipalController implements Initializable {
             String lowerCaseFilter = newValue.toLowerCase();
 
             if (produto.getCodigo().toLowerCase().contains(lowerCaseFilter) ||
-                    produto.getNome().toLowerCase().contains(lowerCaseFilter) ||
-                    produto.getFabricante().toLowerCase().contains(lowerCaseFilter) ||
-                    produto.getCategoria().toLowerCase().contains(lowerCaseFilter))
+                produto.getNome().toLowerCase().contains(lowerCaseFilter) ||
+                produto.getFabricante().toLowerCase().contains(lowerCaseFilter) ||
+                produto.getCategoria().toLowerCase().contains(lowerCaseFilter))
                 return true;
             else return produto.getFormula().toLowerCase().contains(lowerCaseFilter);
         })));
@@ -134,7 +134,10 @@ public class CenaPrincipalController implements Initializable {
     }
 
     public void atualizarValorTotal() {
-        valorTotal.setText("Total : R$" + tabelaCompras.getItems().stream().mapToDouble(ProdutoCesta::getPreco).sum());
+        valorTotal.setText("Total : R$" + tabelaCompras.getItems()
+                                                       .stream()
+                                                       .mapToDouble(ProdutoCesta::getPreco)
+                                                       .sum());
     }
 
     public void removerProdutoCesta() {
@@ -175,24 +178,35 @@ public class CenaPrincipalController implements Initializable {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("cenaVendas.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(loader.load()));
-        ((CenaVendasController) loader.getController()).setVendas(vendas);
         stage.setTitle("Consulta de Vendas");
+
+        ((CenaVendasController) loader.getController()).setVendasTabela(vendas);
         stage.show();
     }
 
     public void finalizarVenda() {
         Cliente clienteSelecionado = listaClientesComboBox.getSelectionModel().getSelectedItem();
 
-        System.out.println(tabelaCompras.getItems());
         tabelaCompras.getItems().forEach(compra -> {
-            ProdutoEstoque produtoEstoque = estoque.stream().filter(produto -> produto.getCodigo().equals(compra.getCodigo())).findAny().orElse(null);
+            ProdutoEstoque produtoEstoque = tabelaEstoque.getItems()
+                                                         .stream()
+                                                         .filter(produto -> produto.getCodigo().equals(compra.getCodigo()))
+                                                         .findAny()
+                                                         .orElse(null);
             assert produtoEstoque != null;
             produtoEstoque.setQuantidade( produtoEstoque.getQuantidade() - compra.getUnidades());
         });
 
-        tabelaCompras.getItems().forEach(compra -> vendas.add(new Venda(clienteSelecionado.cpfProperty(), clienteSelecionado.nomeProperty(),
-                                 compra.codigoProperty(), compra.nomeProperty(), new SimpleStringProperty(compra.unidadesProperty().toString()),
-                                 new SimpleStringProperty(Double.toString(compra.getPreco())), new SimpleStringProperty(formatter.format(LocalDateTime.now())))));
+        tabelaEstoque.refresh();
 
+        tabelaCompras.getItems()
+                     .forEach(compra -> vendas.add(new Venda(clienteSelecionado.cpfProperty(),
+                                                             clienteSelecionado.nomeProperty(),
+                                                             compra.codigoProperty(),
+                                                             compra.nomeProperty(),
+                                                             new SimpleStringProperty(Integer.toString(compra.getUnidades())),
+                                                             new SimpleStringProperty(Double.toString(compra.getPreco())),
+                                                             new SimpleStringProperty(formatter.format(LocalDateTime.now())))));
+        tabelaCompras.getItems().clear();
     }
 }

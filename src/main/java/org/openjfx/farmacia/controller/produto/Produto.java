@@ -20,17 +20,15 @@ public abstract class Produto {
     public void setNome(String nome) { this.nome.set(nome); }
 
     public String getFabricante() { return fabricante.get(); }
-    public SimpleStringProperty fabricanteProperty() { return fabricante; }
+
     public void setFabricante(String fabricante) { this.fabricante.set(fabricante); }
 
     public String getCategoria() { return categoria.get(); }
-    public SimpleStringProperty categoriaProperty() { return categoria; }
+
     public void setCategoria(String categoria) { this.categoria.set(categoria); }
     
     public String getFormula() { return formula.get(); }
-    public SimpleStringProperty formulaProperty() { return formula; }
-    public void setFormula(String formula) { this.formula.set(formula); }
-    
+
     public double getPrecoUnitario() { return precoUnitario.get(); }
     public SimpleDoubleProperty precoUnitarioProperty() { return precoUnitario; }
     public void setPrecoUnitario(double precoUnitario) { this.precoUnitario.set(precoUnitario); }

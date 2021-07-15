@@ -19,15 +19,7 @@ public class ProdutoEstoque extends Produto {
 		this.quantidade= quantidade;
 	}
 
-	public SimpleIntegerProperty quantidadeProperty() {
-		return quantidade;
-	}
-
 	public Integer getQuantidade() { return quantidade.get();}
-
-	public void setQuantidade(SimpleIntegerProperty quantidade) {
-		this.quantidade = quantidade;
-	}
 
 	public void setQuantidade(int quantidade) { this.quantidade.set(quantidade); }
 

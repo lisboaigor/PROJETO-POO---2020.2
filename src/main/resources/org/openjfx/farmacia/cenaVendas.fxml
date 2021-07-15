@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.farmacia.controller.view.CenaVendasController">
-    <TextField fx:id="caixaPesquisaVendas" layoutX="14.0" layoutY="22.0" promptText="Digite o nome ou cpf de um cliente, ou data de venda." AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
+    <TextField fx:id="caixaPesquisaVendas" layoutX="14.0" layoutY="22.0" promptText="Procurar por cpf, nome, codigo do produto, nome do produto ou data..." AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
     <TableView fx:id="tabelaVendas" layoutX="300.0" layoutY="200.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="54.0">
       <columns>
           <TableColumn fx:id="cpf" prefWidth="75.0" text="CPF" />

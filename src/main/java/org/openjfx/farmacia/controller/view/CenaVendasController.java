@@ -33,10 +33,10 @@ public class CenaVendasController implements Initializable {
         nomeProduto.setCellValueFactory(new PropertyValueFactory<>("nomeProduto"));
         unidades.setCellValueFactory(new PropertyValueFactory<>("unidades"));
         preco.setCellValueFactory(new PropertyValueFactory<>("preco"));
-        data.setCellValueFactory(new PropertyValueFactory<>("data"));
+        data.setCellValueFactory(new PropertyValueFactory<>("dataVenda"));
     }
 
-    public void setVendas(ObservableList<Venda> vendas) {
+    public void setVendasTabela(ObservableList<Venda> vendas) {
         this.vendas = vendas;
         FilteredList<Venda> listaFiltrada = new FilteredList<>(this.vendas);
         caixaPesquisaVendas.textProperty().addListener(((observable, oldValue, newValue) -> listaFiltrada.setPredicate(venda -> {
