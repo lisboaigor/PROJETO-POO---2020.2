@@ -1,5 +1,6 @@
 package org.openjfx.farmacia.controller.view;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -23,6 +24,8 @@ import org.openjfx.farmacia.controller.produto.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -31,6 +34,7 @@ public class CenaPrincipalController implements Initializable {
     ObservableList<Cliente> clientes = FXCollections.observableArrayList(new ClienteController().getClientes());
     ObservableList<ProdutoEstoque> estoque = FXCollections.observableArrayList(new Estoque().getEstoque());
     ObservableList<Venda> vendas = FXCollections.observableArrayList(new Vendas().getVendas());
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     // Caixa de pesquisa
     public TextField caixaPesquisaProdutos;
@@ -176,4 +180,19 @@ public class CenaPrincipalController implements Initializable {
         stage.show();
     }
 
+    public void finalizarVenda() {
+        Cliente clienteSelecionado = listaClientesComboBox.getSelectionModel().getSelectedItem();
+
+        System.out.println(tabelaCompras.getItems());
+        tabelaCompras.getItems().forEach(compra -> {
+            ProdutoEstoque produtoEstoque = estoque.stream().filter(produto -> produto.getCodigo().equals(compra.getCodigo())).findAny().orElse(null);
+            assert produtoEstoque != null;
+            produtoEstoque.setQuantidade( produtoEstoque.getQuantidade() - compra.getUnidades());
+        });
+
+        tabelaCompras.getItems().forEach(compra -> vendas.add(new Venda(clienteSelecionado.cpfProperty(), clienteSelecionado.nomeProperty(),
+                                 compra.codigoProperty(), compra.nomeProperty(), new SimpleStringProperty(compra.unidadesProperty().toString()),
+                                 new SimpleStringProperty(Double.toString(compra.getPreco())), new SimpleStringProperty(formatter.format(LocalDateTime.now())))));
+
+    }
 }

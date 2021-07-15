@@ -50,7 +50,7 @@
     </TableView>
     <Text layoutX="987.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecione um cliente" />
     <Button alignment="CENTER" layoutX="14.0" layoutY="660.0" mnemonicParsing="false" onMouseClicked="#adicionarProdutoCesta" prefHeight="25.0" prefWidth="140.0" text="Adicionar à cesta" textAlignment="CENTER" />
-    <Button layoutX="990.0" layoutY="661.0" mnemonicParsing="false" text="Finalizar Compra" />
+    <Button layoutX="990.0" layoutY="661.0" mnemonicParsing="false" onAction="#finalizarVenda" text="Finalizar Venda" />
     <ComboBox fx:id="listaClientesComboBox" layoutX="758.0" layoutY="443.0" prefHeight="24.0" prefWidth="593.0" promptText="Selecione um cliente ou digite seu Nome/CPF" />
     <Button layoutX="758.0" layoutY="373.0" mnemonicParsing="false" onAction="#removerProdutoCesta" text="Remover Produto" />
     <Text fx:id="valorTotal" layoutX="1273.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor Toral: R$" AnchorPane.rightAnchor="15.0" />
