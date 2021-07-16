@@ -13,4 +13,5 @@ module org.openjfx.farmacia {
     opens org.openjfx.farmacia.controller.produto;
     exports org.openjfx.farmacia.controller.cliente;
     opens org.openjfx.farmacia.controller.cliente;
+    opens org.openjfx.farmacia.controller.vendas;
 }
