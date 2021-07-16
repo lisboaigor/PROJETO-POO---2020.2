@@ -1,4 +1,4 @@
-package org.openjfx.farmacia.controller.produto;
+package org.openjfx.farmacia.controller.vendas;
 
 import javafx.beans.property.SimpleStringProperty;
 
