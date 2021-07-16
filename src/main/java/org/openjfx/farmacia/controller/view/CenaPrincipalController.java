@@ -1,5 +1,12 @@
 package org.openjfx.farmacia.controller.view;
 
+import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,14 +28,8 @@ import org.openjfx.farmacia.App;
 import org.openjfx.farmacia.controller.cliente.Cliente;
 import org.openjfx.farmacia.controller.cliente.ClienteController;
 import org.openjfx.farmacia.controller.produto.*;
-
-import java.io.IOException;
-import java.net.URL;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-import java.util.stream.Collectors;
+import org.openjfx.farmacia.controller.vendas.Venda;
+import org.openjfx.farmacia.controller.vendas.Vendas;
 
 public final class CenaPrincipalController implements Initializable {
     private final ObservableList<Cliente> clientes = FXCollections.observableArrayList(new ClienteController().getClientes());
