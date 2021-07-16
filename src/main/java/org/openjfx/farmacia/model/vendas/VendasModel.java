@@ -13,7 +13,7 @@ public class VendasModel {
             SEPARATOR + "openjfx" + SEPARATOR + "farmacia" + SEPARATOR + "model" + SEPARATOR +
             "vendas" + SEPARATOR + "vendas.txt";
 
-    private static ArrayList<Venda> vendas;
+    private final ArrayList<Venda> vendas;
 
     public VendasModel() {
         vendas = new ArrayList<>();
@@ -33,7 +33,7 @@ public class VendasModel {
         return new Venda(new SimpleStringProperty(informacoes[0]), new SimpleStringProperty(informacoes[1]),
                          new SimpleStringProperty(informacoes[2]), new SimpleStringProperty(informacoes[3]),
                          new SimpleStringProperty(informacoes[4]), new SimpleStringProperty(informacoes[5]),
-                         new SimpleStringProperty(informacoes[7]));
+                         new SimpleStringProperty(informacoes[6]));
     }
 
     public ArrayList<Venda> getVendas() {

@@ -21,6 +21,7 @@ public class NovoClienteController {
             clientes.add(new Cliente(new SimpleStringProperty(cpfClienteField.getText()),
                     				 new SimpleStringProperty(nomeClienteField.getText()),
                     				 new SimpleBooleanProperty(true)));
+
         }
     }
 

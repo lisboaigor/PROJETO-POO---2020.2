@@ -45,6 +45,7 @@ public final class MainController implements Initializable {
     private final ObservableList<ProdutoEstoque> estoque = FXCollections.observableArrayList(estoqueModel.getEstoque());
     private final ObservableList<Venda> vendas = FXCollections.observableArrayList(vendasModel.getVendas());
     private final ObservableList<ProdutoEstoque> removidos = FXCollections.observableArrayList(removidosModel.getRemovidos());
+
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     // Caixa de pesquisa
@@ -169,7 +170,7 @@ public final class MainController implements Initializable {
         stage.setScene(new Scene(loader.load()));
         stage.setTitle("Adiministração de Clientes");
         stage.setResizable(false);
-
+        stage.setOnCloseRequest(e -> inicializarClientes());
         ((AdmClientesController) loader.getController()).setClientes(clientes);
         stage.show();
     }

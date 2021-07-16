@@ -1,1 +1,2 @@
 123456;Nimesulida;EMC;X;Nimesulida;50.0;0
+789;nao sei;nao sei;nao sei;nao sei;77.0;8
