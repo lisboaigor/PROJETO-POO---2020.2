@@ -39,12 +39,12 @@ public final class MainController implements Initializable {
     private static final EstoqueModel estoqueModel = new EstoqueModel();
     private static final ClientesModel clientesModel = new ClientesModel();
     private static final VendasModel vendasModel = new VendasModel();
-    private static final RemovidosModel REMOVIDOS_MODEL = new RemovidosModel();
+    private static final RemovidosModel removidosModel = new RemovidosModel();
 
     private final ObservableList<Cliente> clientes = FXCollections.observableArrayList(clientesModel.getClientes());
     private final ObservableList<ProdutoEstoque> estoque = FXCollections.observableArrayList(estoqueModel.getEstoque());
     private final ObservableList<Venda> vendas = FXCollections.observableArrayList(vendasModel.getVendas());
-    private final ObservableList<ProdutoEstoque> removidos = FXCollections.observableArrayList(REMOVIDOS_MODEL.getRemovidos());
+    private final ObservableList<ProdutoEstoque> removidos = FXCollections.observableArrayList(removidosModel.getRemovidos());
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     // Caixa de pesquisa
@@ -237,7 +237,7 @@ public final class MainController implements Initializable {
         estoqueModel.fecharEstoque(estoque);
         clientesModel.fecharClientes(clientes);
         vendasModel.fecharVendas(vendas);
-        REMOVIDOS_MODEL.fecharRemovidos(removidos);
+        removidosModel.fecharRemovidos(removidos);
         System.out.println("Models fechados!");
     }
 }
