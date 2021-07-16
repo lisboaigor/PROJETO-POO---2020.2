@@ -1,4 +1,4 @@
-package org.openjfx.farmacia.controller.vendas;
+package org.openjfx.farmacia.venda;
 
 import javafx.beans.property.SimpleStringProperty;
 
@@ -55,6 +55,7 @@ public class Venda {
 
     @Override
     public String toString() {
-        return cpf + ";" + nomeCliente + ";" + codigo + ";" + nomeProduto + ";" + unidades + ";" + preco + dataVenda;
+        return cpf.get() + ";" + nomeCliente.get() + ";" + codigo.get() + ";" + nomeProduto.get() + ";" +
+                unidades.get() + ";"+ preco.get() + dataVenda.get();
     }
 }

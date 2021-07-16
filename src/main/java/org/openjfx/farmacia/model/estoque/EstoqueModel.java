@@ -1,27 +1,23 @@
-package org.openjfx.farmacia.controller.produto;
+package org.openjfx.farmacia.model.estoque;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
+import org.openjfx.farmacia.produto.ProdutoEstoque;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
-public class Estoque {
+public class EstoqueModel {
     private static final String SEPARATOR = System.getProperty("file.separator");
-
     private static final String ESTOQUE_PATH = "src" + SEPARATOR + "main" + SEPARATOR + "java" + SEPARATOR + "org" +
-            SEPARATOR + "openjfx" + SEPARATOR + "farmacia" + SEPARATOR + "model" + SEPARATOR +
-            "estoque" + SEPARATOR + "estoque.txt";
-
-    private static final String EXCLUIDOS = "src" + SEPARATOR + "main" + SEPARATOR + "java" + SEPARATOR + "org" +
-            SEPARATOR + "openjfx" + SEPARATOR + "farmacia" + SEPARATOR + "model" + SEPARATOR +
-            "estoque" + SEPARATOR + "excluidos.txt";
+                                SEPARATOR + "openjfx" + SEPARATOR + "farmacia" + SEPARATOR + "model" + SEPARATOR +
+                                "estoque" + SEPARATOR + "estoque.txt";
 
     private final ArrayList<ProdutoEstoque> estoque;
 
-    public Estoque() {
+    public EstoqueModel() {
         this.estoque = new ArrayList<>();
         try (BufferedReader buffer = new BufferedReader(new FileReader(ESTOQUE_PATH))) {
             buffer.lines().forEach(line -> estoque.add(strToProduto(line)));
@@ -38,27 +34,19 @@ public class Estoque {
                 new SimpleIntegerProperty(Integer.parseInt(informacoes[6])));
     }
 
-    public void fecharEstoque() {
+    public void fecharEstoque(ObservableList<ProdutoEstoque> estoque) {
         try (BufferedWriter buffer = new BufferedWriter(new FileWriter(ESTOQUE_PATH, false))) {
             PrintWriter printer = new PrintWriter(buffer);
             estoque.forEach(produto -> printer.println(produto.toString()));
             estoque.clear();
             printer.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            try {
+                new File("estoque.txt").createNewFile();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
         }
-    }
-
-    public List<ProdutoEstoque> listarExcluidos() {
-        List<ProdutoEstoque> excluidos = new ArrayList<>();
-
-        try (BufferedReader buffer = new BufferedReader(new FileReader(EXCLUIDOS))) {
-            buffer.lines().forEach(produto -> excluidos.add(strToProduto(produto)));
-            return excluidos;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     public ArrayList<ProdutoEstoque> getEstoque() {

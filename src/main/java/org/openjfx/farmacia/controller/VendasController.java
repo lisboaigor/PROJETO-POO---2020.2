@@ -1,4 +1,4 @@
-package org.openjfx.farmacia.controller.view;
+package org.openjfx.farmacia.controller;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -7,13 +7,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.openjfx.farmacia.venda.Venda;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import org.openjfx.farmacia.controller.vendas.Venda;
-
-public class CenaVendasController implements Initializable {
+public class VendasController implements Initializable {
     ObservableList<Venda> vendas;
 
     public TextField caixaPesquisaVendas;

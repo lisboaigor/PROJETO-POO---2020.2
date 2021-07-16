@@ -1,4 +1,4 @@
-package org.openjfx.farmacia.controller.view;
+package org.openjfx.farmacia.controller;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -13,13 +13,13 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import javafx.util.converter.BooleanStringConverter;
 import org.openjfx.farmacia.App;
-import org.openjfx.farmacia.controller.cliente.Cliente;
+import org.openjfx.farmacia.cliente.Cliente;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CenaAdmClientesController implements Initializable {
+public class AdmClientesController implements Initializable {
     public TableView<Cliente> tabelaClientes;
     public TableColumn<Cliente, String> cpf;
     public TableColumn<Cliente, String> nome;
@@ -59,11 +59,11 @@ public class CenaAdmClientesController implements Initializable {
     }
 
     public void abrirCenaNovoCliente() throws IOException {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("cenaNovoCliente.fxml"));
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("novoCliente.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(loader.load()));
 
-        ((CenaNovoClienteController) loader.getController()).setClientes((FilteredList<Cliente>) tabelaClientes.getItems());
+        ((NovoClienteController) loader.getController()).setClientes((FilteredList<Cliente>) tabelaClientes.getItems());
 
         stage.setTitle("Cadastro de Cliente");
         stage.setResizable(false);

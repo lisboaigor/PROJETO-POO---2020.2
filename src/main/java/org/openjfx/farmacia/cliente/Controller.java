@@ -1,4 +1,4 @@
-package org.openjfx.farmacia.controller.cliente;
+package org.openjfx.farmacia.cliente;
 
 public interface Controller {
 	public void cadastrarCliente();

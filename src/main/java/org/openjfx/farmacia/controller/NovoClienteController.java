@@ -1,13 +1,13 @@
-package org.openjfx.farmacia.controller.view;
+package org.openjfx.farmacia.controller;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.TextField;
-import org.openjfx.farmacia.controller.cliente.Cliente;
+import org.openjfx.farmacia.cliente.Cliente;
 
-public class CenaNovoClienteController {
+public class NovoClienteController {
     ObservableList<Cliente> clientes;
 
     public TextField nomeClienteField;

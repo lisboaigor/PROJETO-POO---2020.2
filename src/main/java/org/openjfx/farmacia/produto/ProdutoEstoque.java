@@ -1,4 +1,4 @@
-package org.openjfx.farmacia.controller.produto;
+package org.openjfx.farmacia.produto;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;

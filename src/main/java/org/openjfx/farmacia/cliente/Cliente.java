@@ -1,4 +1,4 @@
-package org.openjfx.farmacia.controller.cliente;
+package org.openjfx.farmacia.cliente;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;

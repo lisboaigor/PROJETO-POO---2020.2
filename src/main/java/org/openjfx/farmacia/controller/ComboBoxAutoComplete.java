@@ -1,4 +1,4 @@
-package org.openjfx.farmacia.controller.view;
+package org.openjfx.farmacia.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

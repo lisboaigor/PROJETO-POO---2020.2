@@ -1,26 +1,32 @@
-package org.openjfx.farmacia.controller.cliente;
+package org.openjfx.farmacia.model.clientes;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
-import java.io.BufferedReader;
-import java.io.FileReader;
+import javafx.collections.ObservableList;
+import org.openjfx.farmacia.cliente.Cliente;
+
+import java.io.*;
 import java.util.ArrayList;
 
-public class ClienteController {
+public class ClientesModel {
     private static final String SEPARATOR = System.getProperty("file.separator");
     private static final String CLIENTES_PATH = "src" + SEPARATOR + "main" + SEPARATOR + "java" + SEPARATOR + "org" +
             SEPARATOR + "openjfx" + SEPARATOR + "farmacia" + SEPARATOR + "model" + SEPARATOR + "clientes" +
             SEPARATOR + "clientes.txt";
 
-    public ArrayList<Cliente> clientes;
+    public static ArrayList<Cliente> clientes;
 
-    public ClienteController() {
-        this.clientes = new ArrayList<>();
+    public ClientesModel() {
+        clientes = new ArrayList<>();
 
         try (BufferedReader buffer = new BufferedReader(new FileReader(CLIENTES_PATH))) {
             buffer.lines().forEach(line -> clientes.add(strToCliente(line)));
         } catch (Exception e) {
-            e.printStackTrace();
+            try {
+                new File("clientes.txt").createNewFile();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
         }
     }
 
@@ -34,4 +40,14 @@ public class ClienteController {
         return clientes;
     }
 
+    public void fecharClientes(ObservableList<Cliente> clientes) {
+        try (BufferedWriter buffer = new BufferedWriter(new FileWriter(CLIENTES_PATH, false))) {
+            PrintWriter printer = new PrintWriter(buffer);
+            clientes.forEach(venda -> printer.println(venda.toString()));
+            clientes.clear();
+            printer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

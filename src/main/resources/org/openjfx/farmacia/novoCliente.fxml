@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="150.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.farmacia.controller.view.CenaNovoClienteController">
+<AnchorPane prefHeight="150.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.farmacia.controller.NovoClienteController">
     <TextField fx:id="nomeClienteField" layoutX="173.0" layoutY="33.0" prefHeight="24.0" prefWidth="245.0" AnchorPane.rightAnchor="15.0" />
     <Text layoutX="14.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome do cliente:" AnchorPane.leftAnchor="15.0" />
     <Text layoutX="14.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF do cliente:" />

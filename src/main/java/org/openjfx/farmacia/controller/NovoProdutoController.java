@@ -1,4 +1,4 @@
-package org.openjfx.farmacia.controller.view;
+package org.openjfx.farmacia.controller;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -6,9 +6,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.TextField;
-import org.openjfx.farmacia.controller.produto.ProdutoEstoque;
+import org.openjfx.farmacia.produto.ProdutoEstoque;
 
-public class CenaNovoProdutoController {
+public class NovoProdutoController {
     public TextField campoFormula;
     public TextField campoQuantidade;
     public TextField campoCategoria;

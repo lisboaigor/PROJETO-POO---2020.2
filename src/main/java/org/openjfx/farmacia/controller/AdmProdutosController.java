@@ -1,8 +1,5 @@
-package org.openjfx.farmacia.controller.view;
+package org.openjfx.farmacia.controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXMLLoader;
@@ -17,10 +14,13 @@ import javafx.stage.Stage;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import org.openjfx.farmacia.App;
-import org.openjfx.farmacia.controller.produto.ProdutoCesta;
-import org.openjfx.farmacia.controller.produto.ProdutoEstoque;
+import org.openjfx.farmacia.produto.ProdutoEstoque;
 
-public class CenaAdmProdutosController implements Initializable {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class AdmProdutosController implements Initializable {
     public TableView<ProdutoEstoque> tabelaEstoque;
     public TableColumn<ProdutoEstoque, String> codigoTabela;
     public TableColumn<ProdutoEstoque, String> nomeTabela;
@@ -30,6 +30,8 @@ public class CenaAdmProdutosController implements Initializable {
     public TableColumn<ProdutoEstoque, Integer> quantidadeTabela;
     public TableColumn<ProdutoEstoque, Double> precoTabela;
     public TextField caixaPesquisaProdutos;
+
+    private ObservableList<ProdutoEstoque> removidos;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -68,54 +70,60 @@ public class CenaAdmProdutosController implements Initializable {
         tabelaEstoque.setItems(listaFiltrada);
     }
 
+    public void setRemovidos(ObservableList<ProdutoEstoque> removidos) {
+        this.removidos = removidos;
+    }
     public void abrirCenaNovoProduto() throws IOException {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("cenaNovoProduto.fxml"));
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("novoProduto.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(loader.load()));
 
-        ((CenaNovoProdutoController) loader.getController()).setEstoque((FilteredList<ProdutoEstoque>) tabelaEstoque.getItems());
+        ((NovoProdutoController) loader.getController()).setEstoque((FilteredList<ProdutoEstoque>) tabelaEstoque.getItems());
 
         stage.setTitle("Cadastro de Cliente");
         stage.setResizable(false);
         stage.show();
     }
 
-    public void alterarCodigo(TableColumn.CellEditEvent<ProdutoCesta, String> produtoEstoqueCellEditEvent) {
+    public void alterarCodigo(TableColumn.CellEditEvent<ProdutoEstoque, String> produtoEstoqueCellEditEvent) {
         ProdutoEstoque produto = tabelaEstoque.getSelectionModel().getSelectedItem();
         produto.setCodigo(produtoEstoqueCellEditEvent.getNewValue());
     }
 
-    public void alterarNome(TableColumn.CellEditEvent<ProdutoCesta, String> produtoEstoqueCellEditEvent) {
+    public void alterarNome(TableColumn.CellEditEvent<ProdutoEstoque, String> produtoEstoqueCellEditEvent) {
         ProdutoEstoque produto = tabelaEstoque.getSelectionModel().getSelectedItem();
         produto.setNome(produtoEstoqueCellEditEvent.getNewValue());
     }
 
-    public void alterarFabricante(TableColumn.CellEditEvent<ProdutoCesta, String> produtoEstoqueCellEditEvent) {
+    public void alterarFabricante(TableColumn.CellEditEvent<ProdutoEstoque, String> produtoEstoqueCellEditEvent) {
         ProdutoEstoque produto = tabelaEstoque.getSelectionModel().getSelectedItem();
         produto.setFabricante(produtoEstoqueCellEditEvent.getNewValue());
     }
 
-    public void alterarCategoria(TableColumn.CellEditEvent<ProdutoCesta, String> produtoEstoqueCellEditEvent) {
+    public void alterarCategoria(TableColumn.CellEditEvent<ProdutoEstoque, String> produtoEstoqueCellEditEvent) {
         ProdutoEstoque produto = tabelaEstoque.getSelectionModel().getSelectedItem();
         produto.setCategoria(produtoEstoqueCellEditEvent.getNewValue());
     }
 
-    public void alterarFormula(TableColumn.CellEditEvent<ProdutoCesta, String> produtoEstoqueCellEditEvent) {
+    public void alterarFormula(TableColumn.CellEditEvent<ProdutoEstoque, String> produtoEstoqueCellEditEvent) {
         ProdutoEstoque produto = tabelaEstoque.getSelectionModel().getSelectedItem();
         produto.setCategoria(produtoEstoqueCellEditEvent.getNewValue());
     }
 
-    public void alterarQuantidade(TableColumn.CellEditEvent<ProdutoCesta, Integer> produtoCestaIntegerCellEditEvent) {
+    public void alterarQuantidade(TableColumn.CellEditEvent<ProdutoEstoque, Integer> produtoCestaIntegerCellEditEvent) {
         ProdutoEstoque produto = tabelaEstoque.getSelectionModel().getSelectedItem();
         produto.setQuantidade(produtoCestaIntegerCellEditEvent.getNewValue());
     }
 
-    public void alterarPreco(TableColumn.CellEditEvent<ProdutoCesta, Double> produtoCestaDoubleCellEditEvent) {
+    public void alterarPreco(TableColumn.CellEditEvent<ProdutoEstoque, Double> produtoCestaDoubleCellEditEvent) {
         ProdutoEstoque produto = tabelaEstoque.getSelectionModel().getSelectedItem();
         produto.setPrecoUnitario(produtoCestaDoubleCellEditEvent.getNewValue());
     }
 
     public void removerProdutoEstoque() {
-        ((FilteredList<ProdutoEstoque>) tabelaEstoque.getItems()).getSource().remove(tabelaEstoque.getSelectionModel().getSelectedItem());
+        removidos.add(tabelaEstoque.getSelectionModel().getSelectedItem());
+        ((FilteredList<ProdutoEstoque>) tabelaEstoque.getItems())
+                                                     .getSource()
+                                                     .remove(tabelaEstoque.getSelectionModel().getSelectedItem());
     }
 }

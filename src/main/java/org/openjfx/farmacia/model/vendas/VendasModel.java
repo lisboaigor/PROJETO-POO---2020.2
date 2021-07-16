@@ -1,29 +1,34 @@
-package org.openjfx.farmacia.controller.vendas;
+package org.openjfx.farmacia.model.vendas;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
+import org.openjfx.farmacia.venda.Venda;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 
-public class Vendas {
+public class VendasModel {
     private static final String SEPARATOR = System.getProperty("file.separator");
     private static final String VENDAS_PATH = "src" + SEPARATOR + "main" + SEPARATOR + "java" + SEPARATOR + "org" +
             SEPARATOR + "openjfx" + SEPARATOR + "farmacia" + SEPARATOR + "model" + SEPARATOR +
             "vendas" + SEPARATOR + "vendas.txt";
 
-    ArrayList<Venda> vendas;
+    private static ArrayList<Venda> vendas;
 
-    public Vendas() {
+    public VendasModel() {
         vendas = new ArrayList<>();
         try (BufferedReader buffer = new BufferedReader(new FileReader(VENDAS_PATH))) {
             buffer.lines().forEach(line -> vendas.add(strToVenda(line)));
         } catch (Exception e) {
-            e.printStackTrace();
+            try {
+                new File("vendas.txt").createNewFile();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
         }
     }
 
-    private Venda strToVenda(String strVenda) {
+    private static Venda strToVenda(String strVenda) {
         String[] informacoes = strVenda.split(";");
         return new Venda(new SimpleStringProperty(informacoes[0]), new SimpleStringProperty(informacoes[1]),
                          new SimpleStringProperty(informacoes[2]), new SimpleStringProperty(informacoes[3]),
@@ -33,5 +38,16 @@ public class Vendas {
 
     public ArrayList<Venda> getVendas() {
         return vendas;
+    }
+
+    public void fecharVendas(ObservableList<Venda> vendas) {
+        try (BufferedWriter buffer = new BufferedWriter(new FileWriter(VENDAS_PATH, false))) {
+            PrintWriter printer = new PrintWriter(buffer);
+            vendas.forEach(venda -> printer.println(venda.toString()));
+            vendas.clear();
+            printer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

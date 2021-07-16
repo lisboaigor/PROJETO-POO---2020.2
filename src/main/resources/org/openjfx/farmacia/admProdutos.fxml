@@ -6,17 +6,17 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.farmacia.controller.view.CenaAdmProdutosController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.farmacia.controller.AdmProdutosController">
    <Button layoutX="15.0" layoutY="542.0" mnemonicParsing="false" onAction="#abrirCenaNovoProduto" text="Novo Produto" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" />
    <TableView fx:id="tabelaEstoque" editable="true" layoutX="16.0" layoutY="60.0" prefHeight="487.0" prefWidth="770.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="54.0">
       <columns>
-         <TableColumn fx:id="codigoTabela" prefWidth="75.0" text="Codigo" />
-         <TableColumn fx:id="nomeTabela" minWidth="-Infinity" prefWidth="151.0" text="Nome" />
-         <TableColumn fx:id="fabricanteTabela" minWidth="-Infinity" prefWidth="101.0" text="Fabricante" />
-         <TableColumn fx:id="categoriaTabela" minWidth="-Infinity" prefWidth="106.0" text="Categoria" />
-         <TableColumn fx:id="formulaTabela" minWidth="-Infinity" prefWidth="109.0" text="Formula" />
-         <TableColumn fx:id="quantidadeTabela" minWidth="-Infinity" prefWidth="93.0" text="Quantidade" />
-         <TableColumn fx:id="precoTabela" minWidth="-Infinity" prefWidth="64.0" text="Preço" />
+         <TableColumn fx:id="codigoTabela" onEditCommit="#alterarCodigo" prefWidth="75.0" text="Codigo" />
+         <TableColumn fx:id="nomeTabela" minWidth="-Infinity" onEditCommit="#alterarNome" prefWidth="151.0" text="Nome" />
+         <TableColumn fx:id="fabricanteTabela" minWidth="-Infinity" onEditCommit="#alterarFabricante" prefWidth="101.0" text="Fabricante" />
+         <TableColumn fx:id="categoriaTabela" minWidth="-Infinity" onEditCommit="#alterarCategoria" prefWidth="106.0" text="Categoria" />
+         <TableColumn fx:id="formulaTabela" minWidth="-Infinity" onEditCommit="#alterarFormula" prefWidth="109.0" text="Formula" />
+         <TableColumn fx:id="quantidadeTabela" minWidth="-Infinity" onEditCommit="#alterarQuantidade" prefWidth="93.0" text="Quantidade" />
+         <TableColumn fx:id="precoTabela" minWidth="-Infinity" onEditCommit="#alterarPreco" prefWidth="64.0" text="Preço" />
       </columns>
       <columnResizePolicy>
          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

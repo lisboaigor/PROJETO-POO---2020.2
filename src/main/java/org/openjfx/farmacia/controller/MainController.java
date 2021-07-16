@@ -1,12 +1,5 @@
-package org.openjfx.farmacia.controller.view;
+package org.openjfx.farmacia.controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,16 +18,33 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import org.openjfx.farmacia.App;
-import org.openjfx.farmacia.controller.cliente.Cliente;
-import org.openjfx.farmacia.controller.cliente.ClienteController;
-import org.openjfx.farmacia.controller.produto.*;
-import org.openjfx.farmacia.controller.vendas.Venda;
-import org.openjfx.farmacia.controller.vendas.Vendas;
+import org.openjfx.farmacia.cliente.Cliente;
+import org.openjfx.farmacia.model.clientes.ClientesModel;
+import org.openjfx.farmacia.model.estoque.EstoqueModel;
+import org.openjfx.farmacia.model.estoque.RemovidosModel;
+import org.openjfx.farmacia.produto.ProdutoCesta;
+import org.openjfx.farmacia.produto.ProdutoEstoque;
+import org.openjfx.farmacia.venda.Venda;
+import org.openjfx.farmacia.model.vendas.VendasModel;
 
-public final class CenaPrincipalController implements Initializable {
-    private final ObservableList<Cliente> clientes = FXCollections.observableArrayList(new ClienteController().getClientes());
-    private final ObservableList<ProdutoEstoque> estoque = FXCollections.observableArrayList(new Estoque().getEstoque());
-    private final ObservableList<Venda> vendas = FXCollections.observableArrayList(new Vendas().getVendas());
+import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+
+public final class MainController implements Initializable {
+    private static final EstoqueModel estoqueModel = new EstoqueModel();
+    private static final ClientesModel clientesModel = new ClientesModel();
+    private static final VendasModel vendasModel = new VendasModel();
+    private static final RemovidosModel REMOVIDOS_MODEL = new RemovidosModel();
+
+    private final ObservableList<Cliente> clientes = FXCollections.observableArrayList(clientesModel.getClientes());
+    private final ObservableList<ProdutoEstoque> estoque = FXCollections.observableArrayList(estoqueModel.getEstoque());
+    private final ObservableList<Venda> vendas = FXCollections.observableArrayList(vendasModel.getVendas());
+    private final ObservableList<ProdutoEstoque> removidos = FXCollections.observableArrayList(REMOVIDOS_MODEL.getRemovidos());
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     // Caixa de pesquisa
@@ -154,35 +164,46 @@ public final class CenaPrincipalController implements Initializable {
     }
 
     public void abrirCenaAdmClientes() throws IOException {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("cenaAdmClientes.fxml"));
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("admClientes.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(loader.load()));
         stage.setTitle("Adiministração de Clientes");
         stage.setResizable(false);
 
-        ((CenaAdmClientesController) loader.getController()).setClientes(clientes);
+        ((AdmClientesController) loader.getController()).setClientes(clientes);
         stage.show();
     }
 
     public void abrirCenaAdmProdutos() throws IOException {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("cenaAdmProdutos.fxml"));
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("admProdutos.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(loader.load()));
         stage.setTitle("Administração Produtos");
         stage.setResizable(false);
 
-        ((CenaAdmProdutosController) loader.getController()).setEstoque(estoque);
+        ((AdmProdutosController) loader.getController()).setEstoque(estoque);
+        ((AdmProdutosController) loader.getController()).setRemovidos(removidos);
         stage.show();
     }
 
     public void abrirCenaVendas() throws IOException {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("cenaVendas.fxml"));
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("vendas.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(loader.load()));
         stage.setTitle("Consulta de Vendas");
 
-        ((CenaVendasController) loader.getController()).setVendasTabela(vendas);
+        ((VendasController) loader.getController()).setVendasTabela(vendas);
         stage.show();
+    }
+
+    public void abrirCenaRemovidos() throws IOException {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("removidos.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(loader.load()));
+            stage.setTitle("Consulta Removidos");
+
+            ((ProdutosRemovidosController) loader.getController()).setTabelaRemovidos(removidos);
+            stage.show();
     }
 
     public void finalizarVenda() {
@@ -209,5 +230,14 @@ public final class CenaPrincipalController implements Initializable {
                                                              new SimpleStringProperty(Double.toString(compra.getPreco())),
                                                              new SimpleStringProperty(formatter.format(LocalDateTime.now())))));
         tabelaCompras.getItems().clear();
+        atualizarValorTotal();
+    }
+
+    public void fecharModels() {
+        estoqueModel.fecharEstoque(estoque);
+        clientesModel.fecharClientes(clientes);
+        vendasModel.fecharVendas(vendas);
+        REMOVIDOS_MODEL.fecharRemovidos(removidos);
+        System.out.println("Models fechados!");
     }
 }

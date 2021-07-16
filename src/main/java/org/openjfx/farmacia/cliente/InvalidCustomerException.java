@@ -1,4 +1,4 @@
-package org.openjfx.farmacia.controller.cliente;
+package org.openjfx.farmacia.cliente;
 
 public class InvalidCustomerException extends Exception {
 	public InvalidCustomerException(String message) {
