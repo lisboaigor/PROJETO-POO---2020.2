@@ -71,7 +71,8 @@ public class ComboBoxAutoComplete<T> {
         cmb.getItems().setAll(filteredList);
     }
 
-    public void handleOnHiding(Event e) {
+    @SuppressWarnings("exports")
+	public void handleOnHiding(Event e) {
         filter = "";
         cmb.getTooltip().hide();
         T s = cmb.getSelectionModel().getSelectedItem();
