@@ -1,5 +1,6 @@
 package org.openjfx.farmacia.cliente;
 
+@SuppressWarnings("serial")
 public class InvalidCustomerException extends Exception {
 	public InvalidCustomerException(String message) {
 		super(message);
