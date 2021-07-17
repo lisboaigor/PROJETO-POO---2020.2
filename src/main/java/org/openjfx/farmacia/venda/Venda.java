@@ -56,6 +56,6 @@ public class Venda {
     @Override
     public String toString() {
         return cpf.get() + ";" + nomeCliente.get() + ";" + codigo.get() + ";" + nomeProduto.get() + ";" +
-                unidades.get() + ";"+ preco.get() + dataVenda.get();
+                unidades.get() + ";"+ preco.get() + ";" + dataVenda.get();
     }
 }
