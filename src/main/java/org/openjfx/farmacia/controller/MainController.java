@@ -49,7 +49,8 @@ public final class MainController implements Initializable {
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     // Caixa de pesquisa
-    public TextField caixaPesquisaProdutos;
+    @SuppressWarnings("exports")
+	public TextField caixaPesquisaProdutos;
 
     // Campos tabela de estoque
     public TableView<ProdutoEstoque> tabelaEstoque;
