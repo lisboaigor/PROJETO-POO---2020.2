@@ -26,7 +26,6 @@ public class NovoClienteController {
 						new SimpleStringProperty(nomeClienteField.getText()), new SimpleBooleanProperty(true)));
 			} catch (InvalidCPFException exception) {
 				System.out.println("isValid = " + isValid);
-				//exception.printStackTrace();
 				throw new InvalidCustomerException(exception);
 			}
 		}
