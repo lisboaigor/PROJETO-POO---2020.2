@@ -11,7 +11,8 @@ import org.openjfx.farmacia.produto.ProdutoEstoque;
 public class NovoProdutoController {
     @SuppressWarnings("exports")
 	public TextField campoFormula;
-    public TextField campoQuantidade;
+    @SuppressWarnings("exports")
+	public TextField campoQuantidade;
     public TextField campoCategoria;
     public TextField campoFabricante;
     public TextField campoNome;
