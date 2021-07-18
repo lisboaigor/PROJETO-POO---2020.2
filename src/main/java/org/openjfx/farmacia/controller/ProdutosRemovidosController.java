@@ -24,7 +24,8 @@ public class ProdutosRemovidosController implements Initializable {
     public TableColumn<ProdutoEstoque, String> formulaTabela;
     public TableColumn<ProdutoEstoque, Integer> quantidadeTabela;
     public TableColumn<ProdutoEstoque, Double> precoTabela;
-    public TextField caixaPesquisaProdutos;
+    @SuppressWarnings("exports")
+	public TextField caixaPesquisaProdutos;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
