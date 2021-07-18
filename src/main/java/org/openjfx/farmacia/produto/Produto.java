@@ -19,7 +19,8 @@ public abstract class Produto {
 
     // Nome
     public String getNome() { return nome.get(); }
-    public SimpleStringProperty nomeProperty() { return nome; }
+    @SuppressWarnings("exports")
+	public SimpleStringProperty nomeProperty() { return nome; }
     public void setNome(String nome) { this.nome.set(nome); }
 
     // Fabricante
