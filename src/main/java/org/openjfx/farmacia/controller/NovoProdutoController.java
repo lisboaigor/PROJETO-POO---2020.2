@@ -54,4 +54,8 @@ public class NovoProdutoController {
 			campoPreco.clear();
 		}
 	}
+
+	public void validaQuantidade() {
+
+	}
 }
