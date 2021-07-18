@@ -25,7 +25,8 @@ public class AdmClientesController implements Initializable {
     public TableColumn<Cliente, String> nome;
     public TableColumn<Cliente, Boolean> ativado;
 
-    public TextField caixaPesquisaClientes;
+    @SuppressWarnings("exports")
+	public TextField caixaPesquisaClientes;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
