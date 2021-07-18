@@ -10,6 +10,7 @@ import org.openjfx.farmacia.cliente.*;
 public class NovoClienteController {
 	public ObservableList<Cliente> clientes;
 
+	@SuppressWarnings("exports")
 	public TextField nomeClienteField;
 	public TextField cpfClienteField;
 
