@@ -43,7 +43,8 @@ public final class Cliente {
         return ativado.get();
     }
 
-    public SimpleBooleanProperty ativadoProperty() {
+    @SuppressWarnings("exports")
+	public SimpleBooleanProperty ativadoProperty() {
         return ativado;
     }
 
