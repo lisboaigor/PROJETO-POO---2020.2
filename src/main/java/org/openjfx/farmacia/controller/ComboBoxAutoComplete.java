@@ -1,5 +1,6 @@
 package org.openjfx.farmacia.controller;
 
+import java.util.stream.Stream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -8,8 +9,6 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Window;
-
-import java.util.stream.Stream;
 
 /**
  *
@@ -23,8 +22,8 @@ import java.util.stream.Stream;
  *
  * @param <T>
  */
-public class ComboBoxAutoComplete<T> {
 
+public class ComboBoxAutoComplete<T> {
     private final ComboBox<T> cmb;
     String filter = "";
     private final ObservableList<T> originalItems;
@@ -37,7 +36,7 @@ public class ComboBoxAutoComplete<T> {
         cmb.setOnHidden(this::handleOnHiding);
     }
 
-    public void handleOnKeyPressed(KeyEvent e) {
+	public void handleOnKeyPressed(KeyEvent e) {
         ObservableList<T> filteredList = FXCollections.observableArrayList();
         KeyCode code = e.getCode();
 
