@@ -15,7 +15,8 @@ import java.util.ResourceBundle;
 public class VendasController implements Initializable {
     ObservableList<Venda> vendas;
 
-    public TextField caixaPesquisaVendas;
+    @SuppressWarnings("exports")
+	public TextField caixaPesquisaVendas;
     public TableView<Venda> tabelaVendas;
     public TableColumn<Venda, String> cpf;
     public TableColumn<Venda, String> nomeCliente;
