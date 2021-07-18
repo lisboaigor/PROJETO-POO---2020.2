@@ -13,7 +13,8 @@ public abstract class Produto {
 
     // Codigo
     public String getCodigo() { return codigo.get(); }
-    public SimpleStringProperty codigoProperty() { return codigo; }
+    @SuppressWarnings("exports")
+	public SimpleStringProperty codigoProperty() { return codigo; }
     public void setCodigo(String codigo) { this.codigo.set(codigo); }
 
     // Nome
