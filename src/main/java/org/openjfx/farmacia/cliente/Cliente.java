@@ -8,7 +8,8 @@ public final class Cliente {
     protected SimpleStringProperty nome;
     protected SimpleBooleanProperty ativado;
 
-    public Cliente(SimpleStringProperty cpf, SimpleStringProperty nome, SimpleBooleanProperty ativado) {
+    @SuppressWarnings("exports")
+	public Cliente(SimpleStringProperty cpf, SimpleStringProperty nome, SimpleBooleanProperty ativado) {
         this.cpf = cpf;
         this.nome = nome;
         this.ativado = ativado;
