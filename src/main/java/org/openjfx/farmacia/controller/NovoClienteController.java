@@ -18,12 +18,12 @@ public class NovoClienteController {
 	public void salvarNovoCliente() throws InvalidCustomerException {
 		if (!cpfClienteField.getText().isEmpty() || cpfClienteField.getText() != null
 				|| !nomeClienteField.getText().isEmpty() || nomeClienteField.getText() != null) {
-			
+
 			boolean isValid = false;
 			try {
 				isValid = validarCPF(cpfClienteField.getText());
 				System.out.println("isValid = " + isValid);
-				
+
 				clientes.add(new Cliente(new SimpleStringProperty(cpfClienteField.getText()),
 						new SimpleStringProperty(nomeClienteField.getText()), new SimpleBooleanProperty(true)));
 			} catch (InvalidCPFException exception) {
@@ -32,19 +32,23 @@ public class NovoClienteController {
 			}
 		}
 	}
-	
+
 	public static boolean validarCPF(String CPF) throws InvalidCPFException {
-		if (CPF.length() != 11)
+		if (CPF.length() != 11) {
 			throw new InvalidCPFException("CPF must be 11 characters long");
-		else if (!CPF.toLowerCase().equals(CPF.toUpperCase()))
+		}
+
+		else if (!CPF.toLowerCase().equals(CPF.toUpperCase())) {
 			throw new InvalidCPFException("CPF must have digits only");
-		else
+		}
+
+		else {
 			return true;
+		}
 	}
 
 	@SuppressWarnings("unchecked")
 	public void setClientes(FilteredList<Cliente> clientes) {
 		this.clientes = (ObservableList<Cliente>) clientes.getSource();
 	}
-
 }
