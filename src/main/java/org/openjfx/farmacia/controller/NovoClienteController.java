@@ -21,7 +21,7 @@ public class NovoClienteController {
 			
 			boolean isValid = false;
 			try {
-				isValid = validaCPF(cpfClienteField.getText());
+				isValid = validarCPF(cpfClienteField.getText());
 				System.out.println("isValid = " + isValid);
 				
 				clientes.add(new Cliente(new SimpleStringProperty(cpfClienteField.getText()),
@@ -33,7 +33,7 @@ public class NovoClienteController {
 		}
 	}
 	
-	private boolean validaCPF(String CPF) throws InvalidCPFException {
+	public static boolean validarCPF(String CPF) throws InvalidCPFException {
 		if (CPF.length() != 11)
 			throw new InvalidCPFException("CPF must be 11 characters long");
 		else if (!CPF.toLowerCase().equals(CPF.toUpperCase()))
