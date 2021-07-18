@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 public class ProdutoEstoque extends Produto {
 	public SimpleIntegerProperty quantidade;
 
+	@SuppressWarnings("exports")
 	public ProdutoEstoque(SimpleStringProperty codigo, SimpleStringProperty nome, SimpleStringProperty fabricante,
 						  SimpleStringProperty categoria, SimpleStringProperty formula, SimpleDoubleProperty preco,
 						  SimpleIntegerProperty quantidade) {
