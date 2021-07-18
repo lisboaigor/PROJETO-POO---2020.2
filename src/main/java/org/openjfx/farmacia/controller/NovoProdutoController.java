@@ -21,7 +21,8 @@ public class NovoProdutoController {
 	public TextField campoNome;
     @SuppressWarnings("exports")
 	public TextField campoCodigo;
-    public TextField campoPreco;
+    @SuppressWarnings("exports")
+	public TextField campoPreco;
 
     ObservableList<ProdutoEstoque> estoque;
 
