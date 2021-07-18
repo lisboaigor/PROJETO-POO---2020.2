@@ -42,6 +42,7 @@ public class NovoClienteController {
 			return true;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void setClientes(FilteredList<Cliente> clientes) {
 		this.clientes = (ObservableList<Cliente>) clientes.getSource();
 	}
