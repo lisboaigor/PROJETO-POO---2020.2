@@ -26,7 +26,8 @@ public class NovoProdutoController {
 
     ObservableList<ProdutoEstoque> estoque;
 
-    public void setEstoque(FilteredList<ProdutoEstoque> estoque) {
+    @SuppressWarnings("unchecked")
+	public void setEstoque(FilteredList<ProdutoEstoque> estoque) {
         this.estoque = (ObservableList<ProdutoEstoque>) estoque.getSource();
     }
 
