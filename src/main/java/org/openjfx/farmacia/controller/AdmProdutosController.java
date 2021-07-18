@@ -29,7 +29,8 @@ public class AdmProdutosController implements Initializable {
     public TableColumn<ProdutoEstoque, String> formulaTabela;
     public TableColumn<ProdutoEstoque, Integer> quantidadeTabela;
     public TableColumn<ProdutoEstoque, Double> precoTabela;
-    public TextField caixaPesquisaProdutos;
+    @SuppressWarnings("exports")
+	public TextField caixaPesquisaProdutos;
 
     private ObservableList<ProdutoEstoque> removidos;
 
