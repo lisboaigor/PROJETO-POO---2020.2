@@ -29,10 +29,9 @@ public class NovoClienteController {
 				//exception.printStackTrace();
 				throw new InvalidCustomerException(exception);
 			}
-
 		}
 	}
-
+	
 	private boolean validaCPF(String CPF) throws InvalidCPFException {
 		if (CPF.length() != 11)
 			throw new InvalidCPFException("CPF must be 11 characters long");
