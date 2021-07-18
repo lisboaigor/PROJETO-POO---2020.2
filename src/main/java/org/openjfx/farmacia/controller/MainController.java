@@ -69,7 +69,8 @@ public final class MainController implements Initializable {
     public TableColumn<ProdutoCesta, Integer> unidadesProdutoCesta;
     public TableColumn<ProdutoCesta, Double> precoProdutoCesta;
 
-    public Text valorTotal;
+    @SuppressWarnings("exports")
+	public Text valorTotal;
 
     // ComboBox
     public ComboBox<Cliente> listaClientesComboBox;
