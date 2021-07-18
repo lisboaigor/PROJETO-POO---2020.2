@@ -34,6 +34,7 @@ public abstract class Produto {
 
     // Preco Unitario
     public double getPrecoUnitario() { return precoUnitario.get(); }
-    public SimpleDoubleProperty precoUnitarioProperty() { return precoUnitario; }
+    @SuppressWarnings("exports")
+	public SimpleDoubleProperty precoUnitarioProperty() { return precoUnitario; }
     public void setPrecoUnitario(double precoUnitario) { this.precoUnitario.set(precoUnitario); }
 }
