@@ -36,6 +36,7 @@ public class ComboBoxAutoComplete<T> {
         cmb.setOnHidden(this::handleOnHiding);
     }
 
+	@SuppressWarnings("exports")
 	public void handleOnKeyPressed(KeyEvent e) {
         ObservableList<T> filteredList = FXCollections.observableArrayList();
         KeyCode code = e.getCode();
