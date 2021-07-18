@@ -8,7 +8,8 @@ public class ProdutoCesta extends Produto {
     protected SimpleIntegerProperty unidades;
     protected SimpleDoubleProperty preco;
 
-    public ProdutoCesta(SimpleStringProperty codigo, SimpleStringProperty nome, SimpleDoubleProperty preco) {
+    @SuppressWarnings("exports")
+	public ProdutoCesta(SimpleStringProperty codigo, SimpleStringProperty nome, SimpleDoubleProperty preco) {
         this.codigo = codigo;
         this.nome = nome;
         this.precoUnitario = preco;
