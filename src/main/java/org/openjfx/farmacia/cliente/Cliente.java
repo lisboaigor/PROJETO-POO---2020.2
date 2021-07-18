@@ -19,7 +19,8 @@ public final class Cliente {
         return nome.get();
     }
 
-    public SimpleStringProperty nomeProperty() {
+    @SuppressWarnings("exports")
+	public SimpleStringProperty nomeProperty() {
         return nome;
     }
 
