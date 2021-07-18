@@ -32,7 +32,8 @@ public final class Cliente {
         return cpf.get();
     }
 
-    public SimpleStringProperty cpfProperty() {
+    @SuppressWarnings("exports")
+	public SimpleStringProperty cpfProperty() {
         return cpf;
     }
 
