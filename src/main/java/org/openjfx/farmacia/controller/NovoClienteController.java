@@ -12,6 +12,7 @@ public class NovoClienteController {
 
 	@SuppressWarnings("exports")
 	public TextField nomeClienteField;
+	@SuppressWarnings("exports")
 	public TextField cpfClienteField;
 
 	public void salvarNovoCliente() throws InvalidCustomerException {
