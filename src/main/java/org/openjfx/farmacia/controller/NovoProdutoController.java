@@ -17,7 +17,8 @@ public class NovoProdutoController {
 	public TextField campoCategoria;
     @SuppressWarnings("exports")
 	public TextField campoFabricante;
-    public TextField campoNome;
+    @SuppressWarnings("exports")
+	public TextField campoNome;
     public TextField campoCodigo;
     public TextField campoPreco;
 
