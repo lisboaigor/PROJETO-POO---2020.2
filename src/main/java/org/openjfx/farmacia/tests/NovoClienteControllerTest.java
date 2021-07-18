@@ -14,8 +14,7 @@ public class NovoClienteControllerTest {
 			assertTrue(NovoClienteController.validarCPF("1234567891a"));
 			assertTrue(NovoClienteController.validarCPF("1234567891A"));
 			assertTrue(NovoClienteController.validarCPF("1234567891"));
-		}
-		catch(InvalidCPFException exception) {
+		} catch (InvalidCPFException exception) {
 			exception.printStackTrace();
 		}
 	}
