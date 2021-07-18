@@ -9,7 +9,8 @@ import javafx.scene.control.TextField;
 import org.openjfx.farmacia.produto.ProdutoEstoque;
 
 public class NovoProdutoController {
-    public TextField campoFormula;
+    @SuppressWarnings("exports")
+	public TextField campoFormula;
     public TextField campoQuantidade;
     public TextField campoCategoria;
     public TextField campoFabricante;
