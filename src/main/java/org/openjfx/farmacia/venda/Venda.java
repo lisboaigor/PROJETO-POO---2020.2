@@ -11,7 +11,8 @@ public class Venda {
     protected SimpleStringProperty preco;
     protected SimpleStringProperty dataVenda;
 
-    public Venda(SimpleStringProperty cpf, SimpleStringProperty nomeCliente, SimpleStringProperty codigo, SimpleStringProperty nomeProduto, SimpleStringProperty unidades, SimpleStringProperty preco, SimpleStringProperty dataVenda) {
+    @SuppressWarnings("exports")
+	public Venda(SimpleStringProperty cpf, SimpleStringProperty nomeCliente, SimpleStringProperty codigo, SimpleStringProperty nomeProduto, SimpleStringProperty unidades, SimpleStringProperty preco, SimpleStringProperty dataVenda) {
         this.cpf = cpf;
         this.nomeCliente = nomeCliente;
         this.codigo = codigo;
