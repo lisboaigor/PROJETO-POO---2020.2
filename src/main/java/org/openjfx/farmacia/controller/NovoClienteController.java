@@ -18,7 +18,6 @@ public class NovoClienteController {
 	public void salvarNovoCliente() throws InvalidCustomerException {
 		if (!cpfClienteField.getText().isEmpty() || cpfClienteField.getText() != null
 				|| !nomeClienteField.getText().isEmpty() || nomeClienteField.getText() != null) {
-
 			boolean isValid = false;
 			try {
 				isValid = validarCPF(cpfClienteField.getText());
