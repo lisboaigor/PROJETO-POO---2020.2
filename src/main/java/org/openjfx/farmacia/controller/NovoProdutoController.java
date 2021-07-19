@@ -6,6 +6,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.TextField;
+import org.openjfx.farmacia.produto.InvalidProductException;
+import org.openjfx.farmacia.produto.NegativeAmountException;
+import org.openjfx.farmacia.produto.NegativePriceException;
 import org.openjfx.farmacia.produto.ProdutoEstoque;
 
 public class NovoProdutoController {
@@ -31,7 +34,10 @@ public class NovoProdutoController {
 		this.estoque = (ObservableList<ProdutoEstoque>) estoque.getSource();
 	}
 
-	public void salvarNovoProduto() {
+	public void salvarNovoProduto() throws InvalidProductException, Exception {
+		double preco = Double.parseDouble(campoPreco.getText());
+		int quantidade = Integer.parseInt(campoQuantidade.getText());
+
 		if ((!campoCodigo.getText().isEmpty() || campoCategoria.getText() != null)
 				&& (!campoNome.getText().isEmpty() || campoNome.getText() != null)
 				&& (!campoFabricante.getText().isEmpty() || campoFabricante.getText() != null)
@@ -39,23 +45,49 @@ public class NovoProdutoController {
 				&& (!campoFormula.getText().isEmpty() || campoFormula.getText() != null)
 				&& (!campoQuantidade.getText().isEmpty() || campoQuantidade.getText() != null)
 				&& (!campoPreco.getText().isEmpty() || campoQuantidade.getText() != null)) {
-			estoque.add(new ProdutoEstoque(new SimpleStringProperty(campoCodigo.getText()),
-					new SimpleStringProperty(campoNome.getText()), new SimpleStringProperty(campoFabricante.getText()),
-					new SimpleStringProperty(campoCategoria.getText()),
-					new SimpleStringProperty(campoFormula.getText()),
-					new SimpleDoubleProperty(Double.parseDouble(campoPreco.getText())),
-					new SimpleIntegerProperty(Integer.parseInt(campoQuantidade.getText()))));
-			campoCodigo.clear();
-			campoNome.clear();
-			campoFabricante.clear();
-			campoCategoria.clear();
-			campoFormula.clear();
-			campoQuantidade.clear();
-			campoPreco.clear();
+			boolean isValid = false;
+
+			try {
+				isValid = validaProduto(preco, quantidade);
+				estoque.add(new ProdutoEstoque(new SimpleStringProperty(campoCodigo.getText()),
+						new SimpleStringProperty(campoNome.getText()),
+						new SimpleStringProperty(campoFabricante.getText()),
+						new SimpleStringProperty(campoCategoria.getText()),
+						new SimpleStringProperty(campoFormula.getText()),
+						new SimpleDoubleProperty(Double.parseDouble(campoPreco.getText())),
+						new SimpleIntegerProperty(Integer.parseInt(campoQuantidade.getText()))));
+			} catch (NegativePriceException exception) {
+				System.out.println("isValid = " + isValid);
+				System.out.println("Preco = " + preco);
+				throw new InvalidProductException(exception);
+			} catch (NegativeAmountException exception) {
+				System.out.println("isValid = " + isValid);
+				System.out.println("Quantidade = " + quantidade);
+				throw new InvalidProductException(exception);
+			} finally {
+				campoCodigo.clear();
+				campoNome.clear();
+				campoFabricante.clear();
+				campoCategoria.clear();
+				campoFormula.clear();
+				campoQuantidade.clear();
+				campoPreco.clear();
+			}
 		}
 	}
 
-	public void validaQuantidade() {
+	public static boolean validaProduto(double preco, int quantidade)
+			throws NegativePriceException, NegativeAmountException {
+		if (preco < 0) {
+			throw new NegativePriceException("Price can't be negative");
+		}
 
+		else if (quantidade < 0) {
+			throw new NegativeAmountException("Amount can't be negative");
+		}
+
+		else {
+			return true;
+		}
 	}
 }
