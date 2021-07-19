@@ -19,6 +19,7 @@ public class NovoClienteController {
 		if (!cpfClienteField.getText().isEmpty() || cpfClienteField.getText() != null
 				|| !nomeClienteField.getText().isEmpty() || nomeClienteField.getText() != null) {
 			boolean isValid = false;
+
 			try {
 				isValid = validarCPF(cpfClienteField.getText());
 				System.out.println("isValid = " + isValid);
