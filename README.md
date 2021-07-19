@@ -9,6 +9,6 @@ Projeto de Sistema de Controle de Estoques feito em Java utilizando o Maven e pa
 * Disciplina: Programação Orientada a Objetos <br/>
 * Período: 2020.2 <br/>
 * Professor: Kalil Araujo Bispo <br/>
-* Autores: Igor Lisboa e Flávio Emanuel
-           
+* Autores: Igor Lisboa e Flávio Emanuel <br/>
 
+![alt text](https://github.com/lisboaigor/Projeto-POO-2020.2/blob/main/Capture.PNG?raw=true)
